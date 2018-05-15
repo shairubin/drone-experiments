@@ -21,24 +21,22 @@ local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, q
 state_sub = rospy.Subscriber('mavros/state', State, state_cb)
 arming_client = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
 set_mode_client = rospy.ServiceProxy('mavros/set_mode', SetMode) 
-
+rospy.init_node('offb_node', anonymous=True) 
+rate = rospy.Rate(20.0);  
 pose = PoseStamped()
 pose.pose.position.x = 0
 pose.pose.position.y = 0
 pose.pose.position.z = 2
 
+
 def changeOffboardModeAndArm():
      
-    rospy.init_node('offb_node', anonymous=True)
     rospy.loginfo("Start changeOffboardModeAndArm"); 
-    rospy.loginfo("End changeOffboardModeAndArm"); 
-
-def position_control():
-    rospy.loginfo('Start of position_control function')
 
     prev_state = current_state
-    rate = rospy.Rate(20.0) # MUST be more then 2Hz
-
+    #global rate 
+    #rate = rospy.Rate(20.0) # MUST be more then 2Hz
+ 
     # send a few setpoints before starting
     rospy.loginfo('send a few setpoints before starting')
     for i in range(100):
@@ -53,8 +51,10 @@ def position_control():
     rospy.loginfo('FCU connected !')    
 
     last_request = rospy.get_rostime()
-    while (not rospy.is_shutdown() and (not current_state.armed)):
-#        rospy.loginfo('inside loop')
+    loops =0; 
+    while (not rospy.is_shutdown() and loops< 600): # simply i do not know yet what other condition i can put here 
+        loops+=1
+        #print(loops)
         now = rospy.get_rostime()
         if current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
             rospy.loginfo('setting mode to OFFBOARD')
@@ -78,19 +78,34 @@ def position_control():
         local_pos_pub.publish(pose)
         rate.sleep()
 
-    rospy.loginfo("End of position_control")
-    rospy.loginfo("Vehicle armed: %r" % current_state.armed)
-    rospy.loginfo("Current mode: %s" % current_state.mode)
+    rospy.loginfo("End of position_control with %d iterations" % loops)
+    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    rospy.loginfo("End changeOffboardModeAndArm"); 
 
+def executeMission(): 
+    pose.pose.position.x = 2
+    pose.pose.position.y = 2
+    pose.pose.position.z = 3
+
+    rospy.loginfo("Start executeMission"); 
+    loops =0    
+    while (not rospy.is_shutdown() and loops< 200):
+        loops +=1;  
+        # Update timestamp and publish pose 
+        pose.header.stamp = rospy.Time.now()
+        local_pos_pub.publish(pose)
+        rate.sleep()
+    rospy.loginfo("End executeMission"); 
 
 def main():
-    print("Hello world")
+    print("Start main")
     try:
-        rospy.loginfo('Start __main__')
         changeOffboardModeAndArm()
-        position_control()
+        executeMission()
     except rospy.ROSInterruptException:
         pass
 
 if __name__ == '__main__':
     main()
+
