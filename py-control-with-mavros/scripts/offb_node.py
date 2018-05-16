@@ -84,8 +84,8 @@ def changeOffboardModeAndArm():
     rospy.loginfo("End changeOffboardModeAndArm"); 
 
 def executeMission(): 
-    pose.pose.position.x = 2
-    pose.pose.position.y = 2
+    pose.pose.position.x = 3
+    pose.pose.position.y = 3
     pose.pose.position.z = 3
 
     rospy.loginfo("Start executeMission"); 
