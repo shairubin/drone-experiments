@@ -28,15 +28,8 @@ pose.pose.position.x = 0
 pose.pose.position.y = 0
 pose.pose.position.z = 2
 
-
-def changeOffboardModeAndArm():
-     
+def setup():     
     rospy.loginfo("Start changeOffboardModeAndArm"); 
-
-    prev_state = current_state
-    #global rate 
-    #rate = rospy.Rate(20.0) # MUST be more then 2Hz
- 
     # send a few setpoints before starting
     rospy.loginfo('send a few setpoints before starting')
     for i in range(100):
@@ -50,9 +43,12 @@ def changeOffboardModeAndArm():
     
     rospy.loginfo('FCU connected !')    
 
+
+def changeOffboardModeAndArm():
+    prev_state = current_state 
     last_request = rospy.get_rostime()
     loops =0; 
-    while (not rospy.is_shutdown() and loops< 600): # simply i do not know yet what other condition i can put here 
+    while (not rospy.is_shutdown() and loops< 500): # simply i do not know yet what other condition i can put here 
         loops+=1
         #print(loops)
         now = rospy.get_rostime()
@@ -101,6 +97,7 @@ def executeMission():
 def main():
     print("Start main")
     try:
+        setup()
         changeOffboardModeAndArm()
         executeMission()
     except rospy.ROSInterruptException:
