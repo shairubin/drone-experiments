@@ -3,6 +3,7 @@
 import rospy
 import mavros
 import mavros_msgs
+import copy 
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool
@@ -79,12 +80,8 @@ def changeOffboardModeAndArm():
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("End changeOffboardModeAndArm"); 
 
-def executeMission(): 
-    pose.pose.position.x = 3
-    pose.pose.position.y = 3
-    pose.pose.position.z = 3
-
-    rospy.loginfo("Start executeMission"); 
+def gotoPose(pose):
+    rospy.loginfo("**Start gotoPose"); 
     loops =0    
     while (not rospy.is_shutdown() and loops< 200):
         loops +=1;  
@@ -92,7 +89,21 @@ def executeMission():
         pose.header.stamp = rospy.Time.now()
         local_pos_pub.publish(pose)
         rate.sleep()
-    rospy.loginfo("End executeMission"); 
+    rospy.loginfo("**End gotoPose"); 
+
+def executeMission(): 
+    pose.pose.position.x = 3
+    pose.pose.position.y = 3
+    pose.pose.position.z = 3
+
+    rospy.loginfo("**Start executeMission"); 
+    gotoPose(pose)        
+    pose.pose.position.x = -2
+    pose.pose.position.y = -2
+    pose.pose.position.z = 1
+    gotoPose(pose)
+    rospy.loginfo("**End executeMission"); 
+
 
 def main():
     print("Start main")
