@@ -49,9 +49,8 @@ def changeOffboardModeAndArm():
     prev_state = current_state 
     last_request = rospy.get_rostime()
     loops =0; 
-    while (not rospy.is_shutdown() and loops< 500): # simply i do not know yet what other condition i can put here 
+    while (not rospy.is_shutdown() and current_state.armed == False): 
         loops+=1
-        #print(loops)
         now = rospy.get_rostime()
         if current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
             rospy.loginfo('setting mode to OFFBOARD')
@@ -75,10 +74,9 @@ def changeOffboardModeAndArm():
         local_pos_pub.publish(pose)
         rate.sleep()
 
-    rospy.loginfo("End of position_control with %d iterations" % loops)
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
-    rospy.loginfo("End changeOffboardModeAndArm"); 
+    rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
 def gotoPose(pose):
     rospy.loginfo("**Start gotoPose"); 
