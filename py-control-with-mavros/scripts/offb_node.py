@@ -6,7 +6,7 @@ import mavros_msgs
 import copy 
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
-from mavros_msgs.srv import SetMode, CommandBool
+from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 
 # callback method for state sub
 current_state = State() 
@@ -21,6 +21,7 @@ rospy.loginfo('Start setting Publishers and Subscribers')
 local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
 state_sub = rospy.Subscriber('mavros/state', State, state_cb)
 arming_client = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
+land_client = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
 set_mode_client = rospy.ServiceProxy('mavros/set_mode', SetMode) 
 rospy.init_node('offb_node', anonymous=True) 
 rate = rospy.Rate(20.0);  
@@ -28,6 +29,13 @@ pose = PoseStamped()
 pose.pose.position.x = 0
 pose.pose.position.y = 0
 pose.pose.position.z = 2
+
+land_cmd = CommandTOL()
+land_cmd.yaw = 0;
+land_cmd.atitude = 0;
+land_cmd.longitude = 0;
+land_cmd.altitude = 0;
+
 
 def setup():     
     rospy.loginfo("Start changeOffboardModeAndArm"); 
@@ -93,13 +101,25 @@ def executeMission():
     pose.pose.position.x = 3
     pose.pose.position.y = 3
     pose.pose.position.z = 3
-
     rospy.loginfo("**Start executeMission"); 
     gotoPose(pose)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
-    gotoPose(pose)
+    #gotoPose(pose)
+    loops =0
+    rospy.loginfo("tryng to land");
+    land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+    while (land_response.success == False):
+      rospy.loginfo("tring to land");
+      land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+      print(land_response.success)
+      loops += 1
+      rate.sleep();
+
+    rospy.loginfo("landed !")
+    
+
     rospy.loginfo("**End executeMission"); 
 
 
