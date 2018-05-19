@@ -106,21 +106,27 @@ def executeMission():
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
-    #gotoPose(pose)
+    gotoPose(pose)
     loops =0
-    rospy.loginfo("tryng to land");
+    rospy.loginfo("trying to land");
+
+    # landing procedure -- send land messages until successfull command 
     land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
     while (land_response.success == False):
-      rospy.loginfo("tring to land");
+      rospy.loginfo("sending landing command again")
       land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
       print(land_response.success)
       loops += 1
-      rate.sleep();
+      rate.sleep()
 
+    while (current_state.armed == True):
+        rate.sleep()
+
+    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("landed !")
-    
 
-    rospy.loginfo("**End executeMission"); 
+    rospy.loginfo("**End executeMission")
 
 
 def main():
