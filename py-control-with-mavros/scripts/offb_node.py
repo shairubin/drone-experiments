@@ -96,6 +96,24 @@ def gotoPose(pose):
         local_pos_pub.publish(pose)
         rate.sleep()
     rospy.loginfo("**End gotoPose"); 
+def land():
+    rospy.loginfo("trying to land");
+# landing procedure -- send land messages until successfull command 
+    land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+    loops = 0
+    while (land_response.success == False and loops < 200):
+      loops+=1 
+      rospy.loginfo("sending landing command again")
+      land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+      print(land_response.success)
+      rate.sleep()
+# wait for engines to stop 
+    if (loops == 200):
+        rospy.logerror("Cannot land!")
+    
+    while (current_state.armed == True):
+        rate.sleep()
+
 
 def executeMission(): 
     pose.pose.position.x = 3
@@ -107,21 +125,11 @@ def executeMission():
     pose.pose.position.y = -2
     pose.pose.position.z = 1
     gotoPose(pose)
-    loops =0
-    rospy.loginfo("trying to land");
-
-    # landing procedure -- send land messages until successfull command 
-    land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
-    while (land_response.success == False):
-      rospy.loginfo("sending landing command again")
-      land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
-      print(land_response.success)
-      loops += 1
-      rate.sleep()
-
-    while (current_state.armed == True):
-        rate.sleep()
-
+    pose.pose.position.x = -2
+    pose.pose.position.y = 3
+    pose.pose.position.z = 2
+    gotoPose(pose)
+    land()
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("landed !")

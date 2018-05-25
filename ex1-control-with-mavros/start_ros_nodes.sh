@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "start roscore nodee "
+echo "start roscore node "
 cd /home/shairegular/catkin_ws/
 roscore &
 sleep 2s
