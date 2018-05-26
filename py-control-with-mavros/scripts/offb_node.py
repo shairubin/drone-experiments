@@ -10,7 +10,7 @@ from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 
 # callback method for state sub
 current_state = State() 
-offb_set_mode = SetMode
+offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
 def state_cb(state):
     global current_state
     current_state = state
