@@ -7,6 +7,7 @@ import copy
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
+from tf.transformations import quaternion_from_euler
 
 # callback method for state sub
 current_state = State() 
@@ -87,7 +88,7 @@ def changeOffboardModeAndArm():
     rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
 def gotoPose(pose):
-    rospy.loginfo("**Start gotoPose"); 
+    rospy.loginfo("**Start gotoPose to pose "); 
     loops =0    
     while (not rospy.is_shutdown() and loops< 200):
         loops +=1;  
@@ -118,16 +119,42 @@ def land():
 def executeMission(): 
     pose.pose.position.x = 3
     pose.pose.position.y = 3
-    pose.pose.position.z = 3
+    pose.pose.position.z =3
+    pose.pose.orientation.x=0
+    pose.pose.orientation.y=0
+    pose.pose.orientation.z=0.7070
+    pose.pose.orientation.w=0.7070
+
+# RPY to convert: 90deg, 0, -90deg
+    q = quaternion_from_euler(0, 0, -3.14)
+    print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
+
+
     rospy.loginfo("**Start executeMission"); 
     gotoPose(pose)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
+    pose.pose.orientation.x=0
+    pose.pose.orientation.y=0
+    pose.pose.orientation.z=0
+    pose.pose.orientation.w=1
     gotoPose(pose)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
+    pose.pose.orientation.x=0
+    pose.pose.orientation.y=0
+    pose.pose.orientation.z=-0.7070
+    pose.pose.orientation.w=0.7070
+    gotoPose(pose)
+    pose.pose.position.x = 0
+    pose.pose.position.y = 0
+    pose.pose.position.z = 1
+    pose.pose.orientation.x=0
+    pose.pose.orientation.y=0
+    pose.pose.orientation.z=-1
+    pose.pose.orientation.w=0
     gotoPose(pose)
     land()
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
