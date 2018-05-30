@@ -4,6 +4,7 @@ import rospy
 import mavros
 import mavros_msgs
 import copy 
+import boardSetup
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
@@ -16,10 +17,9 @@ def state_cb(state):
     global current_state
     current_state = state
 
-#local_pos_pub = rospy.Publisher(mavros.get_topic('setpoint_position', 'local'), PoseStamped, queue_size=10)
 rospy.loginfo('Start setting Publishers and Subscribers')
  
-local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
+boardSetup.local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
 state_sub = rospy.Subscriber('mavros/state', State, state_cb)
 arming_client = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
 land_client = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
@@ -43,7 +43,7 @@ def setup():
     # send a few setpoints before starting
     rospy.loginfo('send a few setpoints before starting')
     for i in range(100):
-        local_pos_pub.publish(pose)
+        boardSetup.local_pos_pub.publish(pose)
         rate.sleep()
 
     rospy.loginfo('wait for FCU connection')    
@@ -80,7 +80,7 @@ def changeOffboardModeAndArm():
 
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
-        local_pos_pub.publish(pose)
+        boardSetup.local_pos_pub.publish(pose)
         rate.sleep()
 
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
@@ -94,7 +94,7 @@ def gotoPose(pose):
         loops +=1;  
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
-        local_pos_pub.publish(pose)
+        boardSetup.local_pos_pub.publish(pose)
         rate.sleep()
     rospy.loginfo("**End gotoPose"); 
 def land():
