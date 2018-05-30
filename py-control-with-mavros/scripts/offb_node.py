@@ -9,18 +9,9 @@ from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 from tf.transformations import quaternion_from_euler
-
-# callback method for state sub
-current_state = State() 
-offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
-def state_cb(state):
-    global current_state
-    current_state = state
+#state
 
 rospy.loginfo('Start setting Publishers and Subscribers')
- 
-state_sub = rospy.Subscriber('mavros/state', State, state_cb)
-arming_client_cmd = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
 
 
 rospy.init_node('offb_node', anonymous=True) 
@@ -47,43 +38,43 @@ def setup():
 
     rospy.loginfo('wait for FCU connection')    
     # wait for FCU connection
-    while not current_state.connected:
+    while not boardSetup.current_state.connected:
         rate.sleep()
     
     rospy.loginfo('FCU connected !')    
 
 
 def changeOffboardModeAndArm():
-    prev_state = current_state 
+    prev_state = boardSetup.current_state 
     last_request = rospy.get_rostime()
     loops =0; 
-    while (not rospy.is_shutdown() and current_state.armed == False): 
+    while (not rospy.is_shutdown() and boardSetup.current_state.armed == False): 
         loops+=1
         now = rospy.get_rostime()
-        if current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
+        if boardSetup.current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
             rospy.loginfo('setting mode to OFFBOARD')
             boardSetup.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
             last_request = now 
         else:
-            if not current_state.armed and (now - last_request > rospy.Duration(5.)):
+            if not boardSetup.current_state.armed and (now - last_request > rospy.Duration(5.)):
                rospy.loginfo('Arming client')
-               arming_client_cmd(True)
+               boardSetup.arming_client_cmd(True)
                last_request = now 
 
         # older versions of PX4 always return success==True, so better to check Status instead
-        if prev_state.armed != current_state.armed:
-            rospy.loginfo("Vehicle armed: %r" % current_state.armed)
-        if prev_state.mode != current_state.mode: 
-            rospy.loginfo("Current mode: %s" % current_state.mode)
-        prev_state = current_state
+        if prev_state.armed != boardSetup.current_state.armed:
+            rospy.loginfo("Vehicle armed: %r" % boardSetup.current_state.armed)
+        if prev_state.mode != boardSetup.current_state.mode: 
+            rospy.loginfo("Current mode: %s" % boardSetup.current_state.mode)
+        prev_state = boardSetup.current_state
 
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
         boardSetup.local_pos_pub.publish(pose)
         rate.sleep()
 
-    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    rospy.loginfo("\t Vehicle armed: %r" % boardSetup.current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % boardSetup.current_state.mode)
     rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
 def gotoPose(pose):
@@ -111,7 +102,7 @@ def land():
     if (loops == 200):
         rospy.logerror("Cannot land!")
     
-    while (current_state.armed == True):
+    while (boardSetup.current_state.armed == True):
         rate.sleep()
 
 
@@ -156,8 +147,8 @@ def executeMission():
     pose.pose.orientation.w=0
     gotoPose(pose)
     land()
-    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    rospy.loginfo("\t Vehicle armed: %r" % boardSetup.current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % boardSetup.current_state.mode)
     rospy.loginfo("landed !")
 
     rospy.loginfo("**End executeMission")
