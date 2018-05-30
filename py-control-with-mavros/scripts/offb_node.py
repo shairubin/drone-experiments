@@ -5,6 +5,7 @@ import mavros
 import mavros_msgs
 import copy 
 import boardSetup
+import DroneCtrl
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
@@ -157,6 +158,8 @@ def executeMission():
 def main():
     print("Start main")
     try:
+        ctrl = DroneCtrl.DroneCtrl() 
+        ctrl.testf()
         setup()
         changeOffboardModeAndArm()
         executeMission()
