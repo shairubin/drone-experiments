@@ -19,11 +19,10 @@ def state_cb(state):
 
 rospy.loginfo('Start setting Publishers and Subscribers')
  
-boardSetup.local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
 state_sub = rospy.Subscriber('mavros/state', State, state_cb)
-arming_client = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
-land_client = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
-set_mode_client = rospy.ServiceProxy('mavros/set_mode', SetMode) 
+arming_client_cmd = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
+
+
 rospy.init_node('offb_node', anonymous=True) 
 rate = rospy.Rate(20.0);  
 pose = PoseStamped()
@@ -63,12 +62,12 @@ def changeOffboardModeAndArm():
         now = rospy.get_rostime()
         if current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
             rospy.loginfo('setting mode to OFFBOARD')
-            set_mode_client(base_mode=0, custom_mode="OFFBOARD")
+            boardSetup.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
             last_request = now 
         else:
             if not current_state.armed and (now - last_request > rospy.Duration(5.)):
                rospy.loginfo('Arming client')
-               arming_client(True)
+               arming_client_cmd(True)
                last_request = now 
 
         # older versions of PX4 always return success==True, so better to check Status instead
@@ -100,12 +99,12 @@ def gotoPose(pose):
 def land():
     rospy.loginfo("trying to land");
 # landing procedure -- send land messages until successfull command 
-    land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+    land_response = boardSetup.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
     loops = 0
     while (land_response.success == False and loops < 200):
       loops+=1 
       rospy.loginfo("sending landing command again")
-      land_response = land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+      land_response = boardSetup.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
       print(land_response.success)
       rate.sleep()
 # wait for engines to stop 
