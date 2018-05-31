@@ -5,7 +5,7 @@ import mavros
 import mavros_msgs
 import copy 
 import boardSetup
-import DroneCtrl
+from DroneCtrl import DroneCtrl
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
@@ -29,20 +29,20 @@ land_cmd.longitude = 0;
 land_cmd.altitude = 0;
 
 
-def setup():     
-    rospy.loginfo("Start changeOffboardModeAndArm"); 
-    # send a few setpoints before starting
-    rospy.loginfo('send a few setpoints before starting')
-    for i in range(100):
-        boardSetup.local_pos_pub.publish(pose)
-        rate.sleep()
+# def setup():     
+#     rospy.loginfo("Start changeOffboardModeAndArm"); 
+#     # send a few setpoints before starting
+#     rospy.loginfo('send a few setpoints before starting')
+#     for i in range(100):
+#         boardSetup.local_pos_pub.publish(pose)
+#         rate.sleep()
 
-    rospy.loginfo('wait for FCU connection')    
-    # wait for FCU connection
-    while not boardSetup.current_state.connected:
-        rate.sleep()
+#     rospy.loginfo('wait for FCU connection')    
+#     # wait for FCU connection
+#     while not boardSetup.current_state.connected:
+#         rate.sleep()
     
-    rospy.loginfo('FCU connected !')    
+#     rospy.loginfo('FCU connected !')    
 
 
 def changeOffboardModeAndArm():
@@ -158,9 +158,9 @@ def executeMission():
 def main():
     print("Start main")
     try:
-        ctrl = DroneCtrl.DroneCtrl() 
-        ctrl.testf()
-        setup()
+        ctrl = DroneCtrl() 
+        ctrl.setup(rate)
+        #setup()
         changeOffboardModeAndArm()
         executeMission()
     except rospy.ROSInterruptException:

@@ -17,13 +17,4 @@ arming_client_cmd = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
 local_pos_pub = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
 land_client = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
 set_mode_client = rospy.ServiceProxy('mavros/set_mode', SetMode) 
-
-#rospy.init_node('offb_node', anonymous=True) 
-
-# define some functions
-def printhello():
-    print "hello"
-    
-def timesfour(input):
-    print input * 4
     
