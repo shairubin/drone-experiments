@@ -47,17 +47,22 @@ land_cmd.altitude = 0;
 
 def changeOffboardModeAndArm():
     prev_state = boardSetup.current_state 
+    duration = rospy.Duration(5.)
     last_request = rospy.get_rostime()
     loops =0; 
     while (not rospy.is_shutdown() and boardSetup.current_state.armed == False): 
         loops+=1
+        if (loops % 30 ==0 ):
+            rospy.loginfo("Current mode: %s " %boardSetup.current_state.mode)
         now = rospy.get_rostime()
-        if boardSetup.current_state.mode != "OFFBOARD" and (now - last_request > rospy.Duration(5.)):
+        if boardSetup.current_state.mode != "OFFBOARD" and (now - last_request > duration) :
             rospy.loginfo('setting mode to OFFBOARD')
-            boardSetup.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
+            boardSetup.setOffBaord()
+            #boardSetup.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
+            rospy.loginfo("Current mode after setting: %s " %boardSetup.current_state.mode)
             last_request = now 
         else:
-            if not boardSetup.current_state.armed and (now - last_request > rospy.Duration(5.)):
+            if not boardSetup.current_state.armed and (now - last_request > duration):
                rospy.loginfo('Arming client')
                boardSetup.arming_client_cmd(True)
                last_request = now 
@@ -65,8 +70,10 @@ def changeOffboardModeAndArm():
         # older versions of PX4 always return success==True, so better to check Status instead
         if prev_state.armed != boardSetup.current_state.armed:
             rospy.loginfo("Vehicle armed: %r" % boardSetup.current_state.armed)
+        #rospy.loginfo("Board state: %s " %boardSetup.current_state.mode)
+        #rospy.loginfo("prev state: %s " %prev_state.mode)
         if prev_state.mode != boardSetup.current_state.mode: 
-            rospy.loginfo("Current mode: %s" % boardSetup.current_state.mode)
+            rospy.loginfo("Current mode changed to: %s" % boardSetup.current_state.mode)
         prev_state = boardSetup.current_state
 
         # Update timestamp and publish pose 
@@ -122,7 +129,7 @@ def executeMission():
 
 
     rospy.loginfo("**Start executeMission"); 
-    gotoPose(pose)        
+    #gotoPose(pose)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -130,7 +137,7 @@ def executeMission():
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    gotoPose(pose)
+    #gotoPose(pose)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -138,7 +145,7 @@ def executeMission():
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
-    gotoPose(pose)
+    #gotoPose(pose)
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -160,7 +167,7 @@ def main():
     try:
         ctrl = DroneCtrl() 
         ctrl.setup(rate)
-        #setup()
+        #ctrl.changeOffboardModeAndArm(rate, boardSetup.set_mode_client)
         changeOffboardModeAndArm()
         executeMission()
     except rospy.ROSInterruptException:
