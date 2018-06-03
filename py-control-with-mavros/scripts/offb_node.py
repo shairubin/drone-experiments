@@ -4,8 +4,6 @@ import mavros
 import mavros_msgs
 import copy 
 import pprint
-#import boardSetup
-#from DroneCtrl import DroneCtrl
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
@@ -19,10 +17,7 @@ def state_cb(state):    # when state changed this function will be called
     rospy.logdebug(pprint.pformat(state))
  
 
-
-rospy.loginfo('Start setting Publishers and Subscribers')
-
-#set_mode_client =  rospy.ServiceProxy('mavros/set_mode', SetMode) 
+rospy.loginfo('Start setting Publishers and Subscribers') 
 rospy.init_node('offb_node', anonymous=True) 
 
 rate = rospy.Rate(20.0);  
@@ -53,7 +48,6 @@ def setup(commHub):
     rospy.loginfo('FCU connected !')    
 
 
-
 def changeOffboardModeAndArm(commHub):
     prev_state = current_state 
     duration = rospy.Duration(5.)
@@ -62,12 +56,11 @@ def changeOffboardModeAndArm(commHub):
     while (not rospy.is_shutdown() and current_state.armed == False): 
         loops+=1
         if (loops % 30 ==0 ):
-            rospy.loginfo("Current mode: %s " % current_state.mode)
+            rospy.logdebug("Current mode: %s " % current_state.mode)
         now = rospy.get_rostime()
         if current_state.mode != "OFFBOARD" and (now - last_request > duration) :
             rospy.loginfo('setting mode to OFFBOARD')
             commHub.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
-            rospy.loginfo("Current mode after setting: %s " % current_state.mode)
             last_request = now 
         else:
             if not current_state.armed and (now - last_request > duration):
@@ -78,8 +71,6 @@ def changeOffboardModeAndArm(commHub):
         # older versions of PX4 always return success==True, so better to check Status instead
         if prev_state.armed != current_state.armed:
             rospy.loginfo("Vehicle armed: %r" % current_state.armed)
-        #rospy.loginfo("Board state: %s " %boardSetup.current_state.mode)
-        #rospy.loginfo("prev state: %s " %prev_state.mode)
         if prev_state.mode != current_state.mode: 
             rospy.loginfo("Current mode changed to: %s" % current_state.mode)
         prev_state = current_state
@@ -132,12 +123,12 @@ def executeMission(commHub):
     pose.pose.orientation.w=0.7070
 
 # RPY to convert: 90deg, 0, -90deg
-    q = quaternion_from_euler(0, 0, -3.14)
-    print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
+    #q = quaternion_from_euler(0, 0, -3.14)
+    #print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
 
 
     rospy.loginfo("**Start executeMission"); 
-    #gotoPose(pose)        
+    gotoPose(pose, commHub)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -145,7 +136,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    #gotoPose(pose)
+    gotoPose(pose, commHub)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -153,7 +144,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
-    #gotoPose(pose)
+    gotoPose(pose, commHub)
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
