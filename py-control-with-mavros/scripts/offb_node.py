@@ -1,21 +1,30 @@
 #!/usr/bin/env python
-
 import rospy
 import mavros
 import mavros_msgs
 import copy 
-import boardSetup
-from DroneCtrl import DroneCtrl
+import pprint
+#import boardSetup
+#from DroneCtrl import DroneCtrl
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 from tf.transformations import quaternion_from_euler
-#state
+current_state = State() 
+offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
+def state_cb(state):    # when state changed this function will be called 
+    global current_state
+    rospy.logdebug("State callback function!")
+    current_state = state
+    rospy.logdebug(pprint.pformat(state))
+ 
+
 
 rospy.loginfo('Start setting Publishers and Subscribers')
 
-
+#set_mode_client =  rospy.ServiceProxy('mavros/set_mode', SetMode) 
 rospy.init_node('offb_node', anonymous=True) 
+
 rate = rospy.Rate(20.0);  
 pose = PoseStamped()
 pose.pose.position.x = 0
@@ -29,92 +38,91 @@ land_cmd.longitude = 0;
 land_cmd.altitude = 0;
 
 
-# def setup():     
-#     rospy.loginfo("Start changeOffboardModeAndArm"); 
-#     # send a few setpoints before starting
-#     rospy.loginfo('send a few setpoints before starting')
-#     for i in range(100):
-#         boardSetup.local_pos_pub.publish(pose)
-#         rate.sleep()
+def setup(commHub):     
+    rospy.loginfo("Start changeOffboardModeAndArm"); 
+    # send a few setpoints before starting
+    rospy.loginfo('send a few setpoints before starting')
+    for i in range(100):
+        commHub.local_pos_pub.publish(pose)
+        rate.sleep()
 
-#     rospy.loginfo('wait for FCU connection')    
-#     # wait for FCU connection
-#     while not boardSetup.current_state.connected:
-#         rate.sleep()
-    
-#     rospy.loginfo('FCU connected !')    
+    rospy.loginfo('wait for FCU connection')    
+    # wait for FCU connection
+    while not current_state.connected:
+        rate.sleep()    
+    rospy.loginfo('FCU connected !')    
 
 
-def changeOffboardModeAndArm():
-    prev_state = boardSetup.current_state 
+
+def changeOffboardModeAndArm(commHub):
+    prev_state = current_state 
     duration = rospy.Duration(5.)
     last_request = rospy.get_rostime()
     loops =0; 
-    while (not rospy.is_shutdown() and boardSetup.current_state.armed == False): 
+    while (not rospy.is_shutdown() and current_state.armed == False): 
         loops+=1
         if (loops % 30 ==0 ):
-            rospy.loginfo("Current mode: %s " %boardSetup.current_state.mode)
+            rospy.loginfo("Current mode: %s " % current_state.mode)
         now = rospy.get_rostime()
-        if boardSetup.current_state.mode != "OFFBOARD" and (now - last_request > duration) :
+        if current_state.mode != "OFFBOARD" and (now - last_request > duration) :
             rospy.loginfo('setting mode to OFFBOARD')
-            boardSetup.setOffBaord()
-            #boardSetup.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
-            rospy.loginfo("Current mode after setting: %s " %boardSetup.current_state.mode)
+            commHub.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
+            rospy.loginfo("Current mode after setting: %s " % current_state.mode)
             last_request = now 
         else:
-            if not boardSetup.current_state.armed and (now - last_request > duration):
+            if not current_state.armed and (now - last_request > duration):
                rospy.loginfo('Arming client')
-               boardSetup.arming_client_cmd(True)
+               commHub.arming_client_cmd(True)
                last_request = now 
 
         # older versions of PX4 always return success==True, so better to check Status instead
-        if prev_state.armed != boardSetup.current_state.armed:
-            rospy.loginfo("Vehicle armed: %r" % boardSetup.current_state.armed)
+        if prev_state.armed != current_state.armed:
+            rospy.loginfo("Vehicle armed: %r" % current_state.armed)
         #rospy.loginfo("Board state: %s " %boardSetup.current_state.mode)
         #rospy.loginfo("prev state: %s " %prev_state.mode)
-        if prev_state.mode != boardSetup.current_state.mode: 
-            rospy.loginfo("Current mode changed to: %s" % boardSetup.current_state.mode)
-        prev_state = boardSetup.current_state
+        if prev_state.mode != current_state.mode: 
+            rospy.loginfo("Current mode changed to: %s" % current_state.mode)
+        prev_state = current_state
 
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
-        boardSetup.local_pos_pub.publish(pose)
+        commHub.local_pos_pub.publish(pose)
         rate.sleep()
 
-    rospy.loginfo("\t Vehicle armed: %r" % boardSetup.current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % boardSetup.current_state.mode)
+    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
-def gotoPose(pose):
+def gotoPose(pose, commHub):
     rospy.loginfo("**Start gotoPose to pose "); 
     loops =0    
     while (not rospy.is_shutdown() and loops< 200):
         loops +=1;  
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
-        boardSetup.local_pos_pub.publish(pose)
+        commHub.local_pos_pub.publish(pose)
         rate.sleep()
     rospy.loginfo("**End gotoPose"); 
-def land():
+def land(commHub):
     rospy.loginfo("trying to land");
 # landing procedure -- send land messages until successfull command 
-    land_response = boardSetup.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+    land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
     loops = 0
     while (land_response.success == False and loops < 200):
       loops+=1 
       rospy.loginfo("sending landing command again")
-      land_response = boardSetup.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+      land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
       print(land_response.success)
       rate.sleep()
 # wait for engines to stop 
     if (loops == 200):
         rospy.logerror("Cannot land!")
     
-    while (boardSetup.current_state.armed == True):
+    while (current_state.armed == True):
         rate.sleep()
 
 
-def executeMission(): 
+def executeMission(commHub): 
     pose.pose.position.x = 3
     pose.pose.position.y = 3
     pose.pose.position.z =3
@@ -153,10 +161,10 @@ def executeMission():
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-1
     pose.pose.orientation.w=0
-    gotoPose(pose)
-    land()
-    rospy.loginfo("\t Vehicle armed: %r" % boardSetup.current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % boardSetup.current_state.mode)
+    gotoPose(pose, commHub)
+    land(commHub)
+    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("landed !")
 
     rospy.loginfo("**End executeMission")
@@ -165,14 +173,26 @@ def executeMission():
 def main():
     print("Start main")
     try:
-        ctrl = DroneCtrl() 
-        ctrl.setup(rate)
-        #ctrl.changeOffboardModeAndArm(rate, boardSetup.set_mode_client)
-        changeOffboardModeAndArm()
-        executeMission()
+        commHub = CommunicationHub()
+        #ctrl = DroneCtrl() 
+        setup(commHub)
+        #ctrl.changeOffboardModeAndArm(rate, set_mode_client)
+        changeOffboardModeAndArm(commHub)
+        executeMission(commHub)
     except rospy.ROSInterruptException:
         pass
 
+class CommunicationHub:
+    def __init__(self):
+        rospy.loginfo("CommunicationHub __init__")
+        self.set_mode_client    = rospy.ServiceProxy('mavros/set_mode', SetMode) 
+        self.arming_client_cmd  = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
+        self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
+        self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
+        self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) # used in setup of drneCtrl 
+
+        
+        
 if __name__ == '__main__':
     main()
 
