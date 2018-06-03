@@ -6,5 +6,5 @@ Setup development environment:
 3. In uxterm4 also run  'source src/my_scripts/gazebo.sh'
 4. In uxterm2 run './src/ex1-control-with-mavros/start_ros_nodes.sh'
 5. In uxterm3 run './src/ex1-control-with-mavros/start_px4.sh'
-6. in uxterm4 run './src/ex1-control-with-mavros/start_gazebo_ros.sh'
+6. in uxterm4 run './src/ex1-control-with-mavros/start_gazebo_ros.sh <bool>' bool is either 'true' or 'false' to indicate gazebo with/without ui
 7. In uxterm1 run 'rosrun py-control-with-mavros offb_node.py' 

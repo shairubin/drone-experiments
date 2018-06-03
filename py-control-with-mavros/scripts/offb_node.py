@@ -9,7 +9,7 @@ from mavros_msgs.msg import State
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 from tf.transformations import quaternion_from_euler
 current_state = State() 
-offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
+#offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
 def state_cb(state):    # when state changed this function will be called 
     global current_state
     rospy.logdebug("State callback function!")
@@ -20,35 +20,40 @@ def state_cb(state):    # when state changed this function will be called
 rospy.loginfo('Start setting Publishers and Subscribers') 
 rospy.init_node('offb_node', anonymous=True) 
 
-rate = rospy.Rate(20.0);  
-pose = PoseStamped()
-pose.pose.position.x = 0
-pose.pose.position.y = 0
-pose.pose.position.z = 2
 
-land_cmd = CommandTOL()
-land_cmd.yaw = 0;
-land_cmd.atitude = 0;
-land_cmd.longitude = 0;
-land_cmd.altitude = 0;
+#land_cmd = CommandTOL()
+#land_cmd.yaw = 0;
+#land_cmd.atitude = 0;
+#land_cmd.longitude = 0;
+#land_cmd.altitude = 0;
 
 
 def setup(commHub):     
+    startUpPose = PoseStamped()
+    startUpPose.pose.position.x = 0
+    startUpPose.pose.position.y = 0
+    startUpPose.pose.position.z = 2
+
     rospy.loginfo("Start changeOffboardModeAndArm"); 
     # send a few setpoints before starting
     rospy.loginfo('send a few setpoints before starting')
     for i in range(100):
-        commHub.local_pos_pub.publish(pose)
-        rate.sleep()
+        commHub.local_pos_pub.publish(startUpPose)
+        commHub.rate.sleep()
 
     rospy.loginfo('wait for FCU connection')    
     # wait for FCU connection
     while not current_state.connected:
-        rate.sleep()    
+        commHub.rate.sleep()    
     rospy.loginfo('FCU connected !')    
 
 
 def changeOffboardModeAndArm(commHub):
+    startUpPose = PoseStamped()
+    startUpPose.pose.position.x = 0
+    startUpPose.pose.position.y = 0
+    startUpPose.pose.position.z = 2
+
     prev_state = current_state 
     duration = rospy.Duration(5.)
     last_request = rospy.get_rostime()
@@ -76,9 +81,9 @@ def changeOffboardModeAndArm(commHub):
         prev_state = current_state
 
         # Update timestamp and publish pose 
-        pose.header.stamp = rospy.Time.now()
-        commHub.local_pos_pub.publish(pose)
-        rate.sleep()
+        startUpPose.header.stamp = rospy.Time.now()
+        commHub.local_pos_pub.publish(startUpPose)
+        commHub.rate.sleep()
 
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
@@ -92,7 +97,7 @@ def gotoPose(pose, commHub):
         # Update timestamp and publish pose 
         pose.header.stamp = rospy.Time.now()
         commHub.local_pos_pub.publish(pose)
-        rate.sleep()
+        commHub.rate.sleep()
     rospy.loginfo("**End gotoPose"); 
 def land(commHub):
     rospy.loginfo("trying to land");
@@ -104,16 +109,18 @@ def land(commHub):
       rospy.loginfo("sending landing command again")
       land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
       print(land_response.success)
-      rate.sleep()
+      commHub.rate.sleep()
 # wait for engines to stop 
     if (loops == 200):
         rospy.logerror("Cannot land!")
     
     while (current_state.armed == True):
-        rate.sleep()
+        commHub.rate.sleep()
 
 
 def executeMission(commHub): 
+    pose = PoseStamped()
+
     pose.pose.position.x = 3
     pose.pose.position.y = 3
     pose.pose.position.z =3
@@ -174,6 +181,8 @@ def main():
         pass
 
 class CommunicationHub:
+    rate = rospy.Rate(20.0);  
+
     def __init__(self):
         rospy.loginfo("CommunicationHub __init__")
         self.set_mode_client    = rospy.ServiceProxy('mavros/set_mode', SetMode) 
