@@ -4,31 +4,27 @@ import mavros
 import mavros_msgs
 import copy 
 import pprint
+#from communication import state_cb, current_state
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 from tf.transformations import quaternion_from_euler
+
+
 current_state = State() 
-#offb_set_mode = SetMode # more about px4 modes: https://dev.px4.io/en/concept/flight_modes.html 
+ 
 def state_cb(state):    # when state changed this function will be called 
     global current_state
     rospy.logdebug("State callback function!")
     current_state = state
     rospy.logdebug(pprint.pformat(state))
- 
 
 rospy.loginfo('Start setting Publishers and Subscribers') 
 rospy.init_node('offb_node', anonymous=True) 
 
 
-#land_cmd = CommandTOL()
-#land_cmd.yaw = 0;
-#land_cmd.atitude = 0;
-#land_cmd.longitude = 0;
-#land_cmd.altitude = 0;
-
-
 def setup(commHub):     
+    global current_state
     startUpPose = PoseStamped()
     startUpPose.pose.position.x = 0
     startUpPose.pose.position.y = 0
@@ -49,6 +45,7 @@ def setup(commHub):
 
 
 def changeOffboardModeAndArm(commHub):
+    global current_state
     startUpPose = PoseStamped()
     startUpPose.pose.position.x = 0
     startUpPose.pose.position.y = 0
@@ -99,7 +96,11 @@ def gotoPose(pose, commHub):
         commHub.local_pos_pub.publish(pose)
         commHub.rate.sleep()
     rospy.loginfo("**End gotoPose"); 
+
+
+
 def land(commHub):
+    global current_state
     rospy.loginfo("trying to land");
 # landing procedure -- send land messages until successfull command 
     land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
@@ -119,6 +120,7 @@ def land(commHub):
 
 
 def executeMission(commHub): 
+    global current_state
     pose = PoseStamped()
 
     pose.pose.position.x = 3
@@ -135,7 +137,7 @@ def executeMission(commHub):
 
 
     rospy.loginfo("**Start executeMission"); 
-    gotoPose(pose, commHub)        
+    #gotoPose(pose, commHub)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -143,7 +145,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    gotoPose(pose, commHub)
+    #gotoPose(pose, commHub)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -181,7 +183,7 @@ def main():
         pass
 
 class CommunicationHub:
-    rate = rospy.Rate(20.0);  
+
 
     def __init__(self):
         rospy.loginfo("CommunicationHub __init__")
@@ -190,6 +192,7 @@ class CommunicationHub:
         self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
         self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
         self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) # used in setup of drneCtrl 
+        self.rate = rospy.Rate(20.0);  
 
         
         
