@@ -86,16 +86,6 @@ def changeOffboardModeAndArm(commHub):
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
-def gotoPose(pose, commHub):
-    rospy.loginfo("**Start gotoPose to pose "); 
-    loops =0    
-    while (not rospy.is_shutdown() and loops< 200):
-        loops +=1;  
-        # Update timestamp and publish pose 
-        pose.header.stamp = rospy.Time.now()
-        commHub.local_pos_pub.publish(pose)
-        commHub.rate.sleep()
-    rospy.loginfo("**End gotoPose"); 
 
 
 
@@ -119,7 +109,7 @@ def land(commHub):
         commHub.rate.sleep()
 
 
-def executeMission(commHub): 
+def executeMission(commHub, navigation): 
     global current_state
     pose = PoseStamped()
 
@@ -137,7 +127,7 @@ def executeMission(commHub):
 
 
     rospy.loginfo("**Start executeMission"); 
-    #gotoPose(pose, commHub)        
+    navigation.gotoPose(pose, commHub)        
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -145,7 +135,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    #gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -153,7 +143,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
-    gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub)
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -161,7 +151,7 @@ def executeMission(commHub):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-1
     pose.pose.orientation.w=0
-    gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub)
     land(commHub)
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
@@ -173,12 +163,11 @@ def executeMission(commHub):
 def main():
     print("Start main")
     try:
-        commHub = CommunicationHub()
-        #ctrl = DroneCtrl() 
+        commHub = CommunicationHub() 
         setup(commHub)
-        #ctrl.changeOffboardModeAndArm(rate, set_mode_client)
         changeOffboardModeAndArm(commHub)
-        executeMission(commHub)
+        navigation = Navigation()
+        executeMission(commHub, navigation)
     except rospy.ROSInterruptException:
         pass
 
@@ -194,6 +183,20 @@ class CommunicationHub:
         self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) # used in setup of drneCtrl 
         self.rate = rospy.Rate(20.0);  
 
+class Navigation:
+    def __init__(self):
+        rospy.loginfo("Navigation __init__")  
+
+    def gotoPose(self, pose, commHub):
+        rospy.loginfo("**Start gotoPose to pose "); 
+        loops =0    
+        while (not rospy.is_shutdown() and loops< 200):
+            loops +=1;  
+            # Update timestamp and publish pose 
+            pose.header.stamp = rospy.Time.now()
+            commHub.local_pos_pub.publish(pose)
+            commHub.rate.sleep()
+        rospy.loginfo("**End gotoPose"); 
         
         
 if __name__ == '__main__':
