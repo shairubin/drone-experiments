@@ -8,16 +8,22 @@ import pprint
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
-from tf.transformations import quaternion_from_euler
+from tf.transformations import quaternion_from_euler, euler_from_quaternion
 
 
 current_state = State() 
+current_pose = PoseStamped() 
  
 def state_cb(state):    # when state changed this function will be called 
     global current_state
     rospy.logdebug("State callback function!")
     current_state = state
     rospy.logdebug(pprint.pformat(state))
+
+def pose_cb(pose):    # when state changed this function will be called 
+    global current_pose
+    rospy.logdebug(rospy.get_caller_id() + "I heard pose %s", pose)
+    current_pose = pose
 
 rospy.loginfo('Start setting Publishers and Subscribers') 
 rospy.init_node('offb_node', anonymous=True) 
@@ -127,7 +133,9 @@ def executeMission(commHub, navigation):
 
 
     rospy.loginfo("**Start executeMission"); 
-    navigation.gotoPose(pose, commHub)        
+    navigation.gotoPose(pose, commHub,200)        
+    navigation.yaw360(navigation.getCurrentPose())
+
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -135,7 +143,7 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    navigation.gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub,200)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -143,7 +151,7 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
-    navigation.gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub,200)
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -151,7 +159,7 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-1
     pose.pose.orientation.w=0
-    navigation.gotoPose(pose, commHub)
+    navigation.gotoPose(pose, commHub,200)
     land(commHub)
     rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
@@ -179,6 +187,7 @@ class CommunicationHub:
         self.set_mode_client    = rospy.ServiceProxy('mavros/set_mode', SetMode) 
         self.arming_client_cmd  = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
         self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
+        self.local_pos_sub      = rospy.Subscriber('mavros/local_position/pose', PoseStamped, pose_cb)
         self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
         self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) # used in setup of drneCtrl 
         self.rate = rospy.Rate(20.0);  
@@ -187,17 +196,36 @@ class Navigation:
     def __init__(self):
         rospy.loginfo("Navigation __init__")  
 
-    def gotoPose(self, pose, commHub):
-        rospy.loginfo("**Start gotoPose to pose "); 
+    def gotoPose(self, pose, commHub, duration):
+        rospy.loginfo("**Start gotoPose: %s", self.strPose(pose)) 
         loops =0    
-        while (not rospy.is_shutdown() and loops< 200):
+        while (not rospy.is_shutdown() and loops< duration):
             loops +=1;  
             # Update timestamp and publish pose 
             pose.header.stamp = rospy.Time.now()
             commHub.local_pos_pub.publish(pose)
             commHub.rate.sleep()
-        rospy.loginfo("**End gotoPose"); 
         
+        rospy.loginfo("**End   gotoPose: %s", self.strPose(self.getCurrentPose()))
+    
+    
+    def yaw360(self, pose):
+        rospy.loginfo("**Start yaw360: %s", self.strPose(pose)) 
+        #1, get current location  - not implemeted yet
+# RPY to convert: 90deg, 0, -90deg
+        #q = quaternion_from_euler(0, 0, -3.14)
+        #print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
+        q = [pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w] 
+        ePose = euler_from_quaternion(q) 
+        print "yaw360:" +str(ePose)
+
+    def getCurrentPose(self):
+        global current_pose
+        return current_pose
+    def strPose(self, pose):
+        return str([round(pose.pose.position.x,2), round(pose.pose.position.y,2), round(pose.pose.position.z,2), \
+                    round(pose.pose.orientation.x,2), round(pose.pose.orientation.y,2), round(pose.pose.orientation.z,2), \
+                    round(pose.pose.orientation.w,2)])    
         
 if __name__ == '__main__':
     main()
