@@ -4,6 +4,7 @@ import mavros
 import mavros_msgs
 import copy 
 import pprint
+import math
 #from communication import state_cb, current_state
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
@@ -126,16 +127,9 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0.7070
     pose.pose.orientation.w=0.7070
-
-# RPY to convert: 90deg, 0, -90deg
-    #q = quaternion_from_euler(0, 0, -3.14)
-    #print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
-
-
     rospy.loginfo("**Start executeMission"); 
     navigation.gotoPose(pose, commHub,200)        
-    navigation.yaw360(navigation.getCurrentPose())
-
+    navigation.yaw360(navigation.getCurrentPose(), commHub)
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -144,6 +138,7 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
     navigation.gotoPose(pose, commHub,200)
+    navigation.yaw360(navigation.getCurrentPose(), commHub)
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -152,6 +147,7 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
     navigation.gotoPose(pose, commHub,200)
+    navigation.yaw360(navigation.getCurrentPose(), commHub)
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -209,15 +205,28 @@ class Navigation:
         rospy.loginfo("**End   gotoPose: %s", self.strPose(self.getCurrentPose()))
     
     
-    def yaw360(self, pose):
-        rospy.loginfo("**Start yaw360: %s", self.strPose(pose)) 
-        #1, get current location  - not implemeted yet
-# RPY to convert: 90deg, 0, -90deg
-        #q = quaternion_from_euler(0, 0, -3.14)
+    def yaw360(self, startPose, commHub):
+        nSteps = 30
+        delay = 10
+        rospy.loginfo("**Start yaw360: %s", self.strPose(startPose)) 
+        q = quaternion_from_euler(0, 0, -3.14)
         #print "The quaternion representation is %s %s %s %s." % (q[0], q[1], q[2], q[3])
-        q = [pose.pose.orientation.x, pose.pose.orientation.y, pose.pose.orientation.z, pose.pose.orientation.w] 
-        ePose = euler_from_quaternion(q) 
-        print "yaw360:" +str(ePose)
+        q = [startPose.pose.orientation.x, startPose.pose.orientation.y, startPose.pose.orientation.z, startPose.pose.orientation.w] 
+        ePose = list(euler_from_quaternion(q)) 
+        rospy.loginfo("Start ePose: %s", str(ePose))
+        nextPose = startPose
+        step = (2.0*math.pi)/nSteps
+        for i in range(1,nSteps):
+            ePose[2] +=  step     
+            rospy.logdebug("next ePose: %s", str(ePose))
+            q = quaternion_from_euler(ePose[0], ePose[1],ePose[2])
+            nextPose.pose.orientation.z = q[2]
+            nextPose.pose.orientation.w = q[3]
+            rospy.logdebug("Pose step %d: %s",i, self.strPose(nextPose))
+            self.gotoPose(nextPose,commHub ,delay)    
+        rospy.loginfo("**End yaw360: %s", self.strPose(self.getCurrentPose())) 
+ 
+
 
     def getCurrentPose(self):
         global current_pose
