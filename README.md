@@ -1,7 +1,7 @@
 #This README would normally document whatever steps are necessary to get the application up and running.
 
 
-##Setup development environment:
+## Setup development environment:
 1. open 4 uxterms: uxterm1, uxterm2, uxterm3, uxterm4  
 2. In each run 'source catkin_ws/src/my_scripts/catkin.sh'
 3. In uxterm4 also run  'source src/my_scripts/gazebo.sh'
