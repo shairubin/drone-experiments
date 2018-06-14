@@ -2,12 +2,25 @@
 import rospy
 from tf.transformations import quaternion_from_euler, euler_from_quaternion
 import math
+"""
+This  module implements compund control actions to the drone.
+To generate HTML documentation for this module issue the
+command:
 
+    pydoc -w  <file name>
+"""
 class Navigation:
     def __init__(self):
         rospy.loginfo("Navigation __init__")  
 
     def gotoPose(self, pose, commHub, duration):
+        """
+        pose: target position
+        commHub: CommunicationHub class to communicate with the drone
+        duration: counter for the duration of the operation 
+    
+        TODO:  ducation and commHub should be eliminated from class description 
+        """
         rospy.loginfo("**Start gotoPose: %s", self.strPose(pose)) 
         loops =0    
         while (not rospy.is_shutdown() and loops< duration):
@@ -42,6 +55,24 @@ class Navigation:
         rospy.loginfo("**End yaw360: %s", self.strPose(commHub.getCurrentPose())) 
  
 
+    def land(self, commHub):
+
+        rospy.loginfo("trying to land");
+    # landing procedure -- send land messages until successfull command 
+        land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+        loops = 0
+        while (land_response.success == False and loops < 200):
+          loops+=1 
+          rospy.loginfo("sending landing command again")
+          land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+          print(land_response.success)
+          commHub.rate.sleep()
+    # wait for engines to stop 
+        if (loops == 200):
+            rospy.logerror("Cannot land!")
+        
+        while (commHub.getCurrentState().armed == True):
+            commHub.rate.sleep()
 
     def strPose(self, pose):
         return str([round(pose.pose.position.x,2), round(pose.pose.position.y,2), round(pose.pose.position.z,2), \
