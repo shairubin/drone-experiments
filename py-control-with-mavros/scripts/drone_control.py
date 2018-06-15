@@ -10,10 +10,11 @@ command:
     pydoc -w  <file name>
 """
 class Navigation:
-    def __init__(self):
-        rospy.loginfo("Navigation __init__")  
+    def __init__(self, commHub_in):
+        rospy.loginfo("Navigation __init__") 
+        self.commHub = commHub_in 
 
-    def gotoPose(self, pose, commHub, duration):
+    def gotoPose(self, pose, duration):
         """
         pose: target position
         commHub: CommunicationHub class to communicate with the drone
@@ -27,13 +28,13 @@ class Navigation:
             loops +=1;  
             # Update timestamp and publish pose 
             pose.header.stamp = rospy.Time.now()
-            commHub.local_pos_pub.publish(pose)
-            commHub.rate.sleep()
+            self.commHub.local_pos_pub.publish(pose)
+            self.commHub.rate.sleep()
         
-        rospy.loginfo("**End   gotoPose: %s", self.strPose(commHub.getCurrentPose()))
+        rospy.loginfo("**End   gotoPose: %s", self.strPose(self.commHub.getCurrentPose()))
     
     
-    def yaw360(self, startPose, commHub):
+    def yaw360(self, startPose):
         nSteps = 30
         delay = 10
         rospy.loginfo("**Start yaw360: %s", self.strPose(startPose)) 
@@ -51,28 +52,28 @@ class Navigation:
             nextPose.pose.orientation.z = q[2]
             nextPose.pose.orientation.w = q[3]
             rospy.logdebug("Pose step %d: %s",i, self.strPose(nextPose))
-            self.gotoPose(nextPose,commHub ,delay)    
-        rospy.loginfo("**End yaw360: %s", self.strPose(commHub.getCurrentPose())) 
+            self.gotoPose(nextPose ,delay)    
+        rospy.loginfo("**End yaw360: %s", self.strPose(self.commHub.getCurrentPose())) 
  
 
-    def land(self, commHub):
+    def land(self):
 
         rospy.loginfo("trying to land");
     # landing procedure -- send land messages until successfull command 
-        land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+        land_response = self.commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
         loops = 0
         while (land_response.success == False and loops < 200):
           loops+=1 
           rospy.loginfo("sending landing command again")
-          land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
+          land_response = self.commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
           print(land_response.success)
-          commHub.rate.sleep()
+          self.commHub.rate.sleep()
     # wait for engines to stop 
         if (loops == 200):
             rospy.logerror("Cannot land!")
         
-        while (commHub.getCurrentState().armed == True):
-            commHub.rate.sleep()
+        while (self.commHub.getCurrentState().armed == True):
+            self.commHub.rate.sleep()
 
     def strPose(self, pose):
         return str([round(pose.pose.position.x,2), round(pose.pose.position.y,2), round(pose.pose.position.z,2), \

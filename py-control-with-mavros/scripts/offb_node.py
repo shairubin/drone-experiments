@@ -98,23 +98,6 @@ def changeOffboardModeAndArm(commHub):
 
 # def land(commHub):
 
-#     rospy.loginfo("trying to land");
-# # landing procedure -- send land messages until successfull command 
-#     land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
-#     loops = 0
-#     while (land_response.success == False and loops < 200):
-#       loops+=1 
-#       rospy.loginfo("sending landing command again")
-#       land_response = commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
-#       print(land_response.success)
-#       commHub.rate.sleep()
-# # wait for engines to stop 
-#     if (loops == 200):
-#         rospy.logerror("Cannot land!")
-    
-#     while (commHub.getCurrentState().armed == True):
-#         commHub.rate.sleep()
-
 
 def executeMission(commHub, navigation): 
     
@@ -128,8 +111,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.z=0.7070
     pose.pose.orientation.w=0.7070
     rospy.loginfo("**Start executeMission"); 
-    navigation.gotoPose(pose, commHub,200)        
-    navigation.yaw360(commHub.getCurrentPose(), commHub)
+    navigation.gotoPose(pose, 200)        
+    navigation.yaw360(commHub.getCurrentPose())
     pose.pose.position.x = -2
     pose.pose.position.y = -2
     pose.pose.position.z = 1
@@ -137,8 +120,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-#    navigation.gotoPose(pose, commHub,200)
-#    navigation.yaw360(commHub.getCurrentPose(), commHub)
+    navigation.gotoPose(pose, 200)
+    navigation.yaw360(commHub.getCurrentPose())
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -146,8 +129,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
- #   navigation.gotoPose(pose, commHub,200)
- #   navigation.yaw360(commHub.getCurrentPose(), commHub)
+    navigation.gotoPose(pose, 200)
+    navigation.yaw360(commHub.getCurrentPose())
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -155,10 +138,10 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-1
     pose.pose.orientation.w=0
-    navigation.gotoPose(pose, commHub,200)
-    navigation.land(commHub)
-    #rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
-    #rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    navigation.gotoPose(pose, 200)
+    navigation.land()
+    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
+    rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("\t Vehicle armed: %r" % commHub.getCurrentState().armed)
     rospy.loginfo("\t Current mode: %s" % commHub.getCurrentState().mode)
     rospy.loginfo("landed !")
@@ -172,7 +155,7 @@ def main():
         commHub = CommunicationHub() 
         setup(commHub)
         changeOffboardModeAndArm(commHub)
-        navigation = Navigation()
+        navigation = Navigation(commHub)
         executeMission(commHub, navigation)
     except rospy.ROSInterruptException:
         pass
