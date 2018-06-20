@@ -64,13 +64,14 @@ class Navigation:
         loops = 0
         while (land_response.success == False and loops < 200):
           loops+=1 
-          rospy.loginfo("sending landing command again")
+          #if (loops % 10 == 0):
+          #  rospy.loginfo("sending landing command again")
           land_response = self.commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
           print(land_response.success)
           self.commHub.rate.sleep()
     # wait for engines to stop 
         if (loops == 200):
-            rospy.logerror("Cannot land!")
+            rospy.logerr("Cannot land!")
         
         while (self.commHub.getCurrentState().armed == True):
             self.commHub.rate.sleep()

@@ -7,6 +7,11 @@ if [ "$simenv" = "lpe" ]; then
 	echo "start gazebo with optical flow iris"
 	sleep 3  
 	roslaunch gazebo_ros empty_world.launch world_name:=/home/shairegular/src/Firmware/Tools/sitl_gazebo/worlds/iris_opt_flow.world gui:=$1 
+elif [ "$simenv" = "rplidar" ]; then 
+	echo "start gazebo with rplidar iris"
+	sleep 3  
+	roslaunch gazebo_ros empty_world.launch world_name:=/home/shairegular/src/Firmware/Tools/sitl_gazebo/worlds/iris_rplidar.world gui:=$1 
+
 elif [ "$simenv" = "default" ]; then 
 	echo "start gazebo in default mode with iris+camera"
 	sleep 3

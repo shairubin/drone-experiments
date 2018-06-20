@@ -9,9 +9,14 @@ if [ "$simenv" = "lpe" ]; then
 	sleep 3
 	no_sim=1 make posix_sitl_lpe gazebo_iris_opt_flow  
 elif [ "$simenv" = "default" ]; then 
-	echo "start px4 in defualt mode and gps-based simulation"
+	echo "start px4 in efk2 mode and gps-based simulation"
 	sleep 3
 	no_sim=1 make posix_sitl_default gazebo_iris
+elif [ "$simenv" = "rplidar" ]; then 
+	echo "start px4 in lpe mode and rplidar simulation"
+	sleep 3
+	no_sim=1 make posix_sitl_lpe gazebo_iris_rplidar
+
 else 
 	echo "unsupported mode"
 

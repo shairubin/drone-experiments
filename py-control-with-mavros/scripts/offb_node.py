@@ -4,17 +4,15 @@ import mavros
 import mavros_msgs
 import copy 
 import pprint
-#import math
 from drone_control import Navigation
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State 
 from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
-#from tf.transformations import quaternion_from_euler, euler_from_quaternion
-
+from diagnostic_msgs.msg import DiagnosticStatus, DiagnosticArray
 
 #current_state = State() 
 current_pose = PoseStamped() 
- 
+current_diagnostic = DiagnosticArray() 
 def state_cb(state):    # when state changed this function will be called 
     global current_state
     rospy.logdebug("State callback function!")
@@ -25,6 +23,13 @@ def pose_cb(pose):    # when state changed this function will be called
     global current_pose
     rospy.logdebug(rospy.get_caller_id() + "I heard pose %s", pose)
     current_pose = pose
+
+def diag_cb(diagnosticArray_status):    
+    global current_diagnostic
+    print "shai rubin"
+    rospy.loginfo("I heard diagnostics message %s", diagnosticArray_status.header)
+    rospy.loginfo("I heard diagnostics staus messages: %d", len(diagnosticArray_status.status))
+    current_diagnostic = diagnosticArray_status
 
 rospy.loginfo('Start setting Publishers and Subscribers') 
 rospy.init_node('offb_node', anonymous=True) 
@@ -120,8 +125,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=0
     pose.pose.orientation.w=1
-    navigation.gotoPose(pose, 200)
-    navigation.yaw360(commHub.getCurrentPose())
+    #navigation.gotoPose(pose, 200)
+    #navigation.yaw360(commHub.getCurrentPose())
     pose.pose.position.x = -2
     pose.pose.position.y = 3
     pose.pose.position.z = 2
@@ -129,8 +134,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.y=0
     pose.pose.orientation.z=-0.7070
     pose.pose.orientation.w=0.7070
-    navigation.gotoPose(pose, 200)
-    navigation.yaw360(commHub.getCurrentPose())
+    #navigation.gotoPose(pose, 200)
+    #navigation.yaw360(commHub.getCurrentPose())
     pose.pose.position.x = 0
     pose.pose.position.y = 0
     pose.pose.position.z = 1
@@ -144,7 +149,7 @@ def executeMission(commHub, navigation):
     rospy.loginfo("\t Current mode: %s" % current_state.mode)
     rospy.loginfo("\t Vehicle armed: %r" % commHub.getCurrentState().armed)
     rospy.loginfo("\t Current mode: %s" % commHub.getCurrentState().mode)
-    rospy.loginfo("landed !")
+    rospy.loginfo("landed at: %s " % navigation.strPose(  commHub.getCurrentPose() ))
 
     rospy.loginfo("**End executeMission")
 
@@ -168,9 +173,10 @@ class CommunicationHub:
         self.set_mode_client    = rospy.ServiceProxy('mavros/set_mode', SetMode) 
         self.arming_client_cmd  = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
         self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
-        self.local_pos_sub      = rospy.Subscriber('mavros/local_position/pose', PoseStamped, pose_cb)
         self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
-        self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) # used in setup of drneCtrl 
+        self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) 
+        self.diagnostic          = rospy.Subscriber("diagnostics", DiagnosticArray, diag_cb) 
+        self.local_pos_sub      = rospy.Subscriber('mavros/local_position/pose', PoseStamped, pose_cb)
         self.rate = rospy.Rate(20.0);  
 
     def getCurrentPose(self):
