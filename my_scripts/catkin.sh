@@ -7,6 +7,6 @@ ls -1 ~/.ros/log/ | wc -l
 CATDIR=$HOME/catkin_ws/
 echo "CATDIR: $CATDIR" 
 cd "$CATDIR"
-echo "source devl/setup.bash"
+echo "running devl/setup.bash"
 source devel/setup.bash
-
+pwd
