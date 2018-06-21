@@ -1,6 +1,12 @@
-#This README would normally document whatever steps are necessary to get the application up and running.
 
-
+## PRE-REQ
+1. ROS isntalled (lunar)
+2. GAZEBO installed with ROS
+3. PX4 installed
+ 
+## DEMO and Test 
+1. ~/catkin_ws/src/ex1-control-with-mavros/test1.sh
+Essentially, this test script is all you need to understand the development environment below 
 ## Setup development environment:
 1. open 4 uxterms: uxterm1, uxterm2, uxterm3, uxterm4  
 2. In each run 'source catkin_ws/src/my_scripts/catkin.sh'
