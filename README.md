@@ -16,4 +16,19 @@ Essentially, this test script is all you need to understand the development envi
 6. in uxterm4 run './src/ex1-control-with-mavros/start_gazebo_ros.sh <bool>' bool is either 'true' or 'false' to indicate gazebo with/without ui
 
 ## Sample run 
-1. In uxterm1 run 'rosrun py-control-with-mavros offb_node.py' 
+1. In uxterm1 run 'rosrun py-control-with-mavros offb_node.py'
+
+## Set up ROS environment (lunar)
+1. source /opt/ros/lunar/setup.sh
+2. catkin_make  
+3. source devel/setup.bash
+4. echo $ROS_PACKAGE_PATH - shuld get you soemthing like ..catkin_ws/src:/opt/ros/lunar/share 
+5. rospack find roscpp -- should see roscpp in the share directory
+6. cd src/
+7. rm py-control-with-mavros/CMakeLists.txt 
+8. rm py-control-with-mavros/package.xml 
+9. rm -rf py-control-with-mavros/src
+10. catkin_create_pkg py-control-with-mavros rospy mavros std_msgs mavros_msgs diagnostic_msgs
+11. . ~/catkin_ws/devel/setup.bash
+12. rospack depends1 py-control-with-mavros -- verify you get all the packages above
+13. now you should be able to run the rosran command above

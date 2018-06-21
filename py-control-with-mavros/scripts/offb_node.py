@@ -26,9 +26,7 @@ def pose_cb(pose):    # when state changed this function will be called
 
 def diag_cb(diagnosticArray_status):    
     global current_diagnostic
-    print "shai rubin"
-    rospy.loginfo("I heard diagnostics message %s", diagnosticArray_status.header)
-    rospy.loginfo("I heard diagnostics staus messages: %d", len(diagnosticArray_status.status))
+    rospy.loginfo("diag_cb")
     current_diagnostic = diagnosticArray_status
 
 rospy.loginfo('Start setting Publishers and Subscribers') 
@@ -175,7 +173,7 @@ class CommunicationHub:
         self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
         self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
         self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) 
-        #self.diagnostic          = rospy.Subscriber("diagnostics", DiagnosticArray, diag_cb) 
+        self.diagnostic          = rospy.Subscriber("diagnostics", DiagnosticArray, diag_cb) 
         self.local_pos_sub      = rospy.Subscriber('mavros/local_position/pose', PoseStamped, pose_cb)
         self.rate = rospy.Rate(20.0);  
 
