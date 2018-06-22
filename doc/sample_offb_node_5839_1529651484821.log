@@ -1,0 +1,6699 @@
+[rospy.client][INFO] 2018-06-22 10:11:24,840: init_node, name[/offb_node_5839_1529651484821], pid[5839]
+[xmlrpc][INFO] 2018-06-22 10:11:24,840: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2018-06-22 10:11:24,840: Started XML-RPC server [http://shairubin-Latitude-5490:45043/]
+[rospy.init][INFO] 2018-06-22 10:11:24,840: ROS Slave URI: [http://shairubin-Latitude-5490:45043/]
+[rospy.impl.masterslave][INFO] 2018-06-22 10:11:24,840: _ready: http://shairubin-Latitude-5490:45043/
+[xmlrpc][INFO] 2018-06-22 10:11:24,841: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2018-06-22 10:11:24,841: Registering with master node http://localhost:11311
+[rospy.init][INFO] 2018-06-22 10:11:24,941: registered with master
+[rospy.rosout][INFO] 2018-06-22 10:11:24,941: initializing /rosout core topic
+[rospy.rosout][INFO] 2018-06-22 10:11:24,946: connected to core topic /rosout
+[rospy.simtime][INFO] 2018-06-22 10:11:24,949: initializing /clock core topic
+[rospy.simtime][INFO] 2018-06-22 10:11:24,956: connected to core topic /clock
+[rospy.internal][INFO] 2018-06-22 10:11:24,960: topic[/clock] adding connection to [http://shairubin-Latitude-5490:33933/], count 0
+[rosout][INFO] 2018-06-22 10:11:24,969: CommunicationHub __init__
+[rosout][INFO] 2018-06-22 10:11:24,996: Start changeOffboardModeAndArm
+[rosout][INFO] 2018-06-22 10:11:24,998: send a few setpoints before starting
+[rospy.internal][INFO] 2018-06-22 10:11:25,000: topic[/diagnostics] adding connection to [http://shairubin-Latitude-5490:43831/], count 0
+[rospy.internal][INFO] 2018-06-22 10:11:25,005: topic[/mavros/local_position/pose] adding connection to [http://shairubin-Latitude-5490:43831/], count 0
+[rospy.internal][INFO] 2018-06-22 10:11:25,007: topic[/mavros/state] adding connection to [http://shairubin-Latitude-5490:43831/], count 0
+[rospy.internal][INFO] 2018-06-22 10:11:25,162: topic[/mavros/setpoint_position/local] adding connection to [/mavros], count 0
+[rospy.internal][INFO] 2018-06-22 10:11:25,164: topic[/rosout] adding connection to [/rosout], count 0
+[rosout][INFO] 2018-06-22 10:11:26,507: header: 
+  seq: 761
+  stamp: 
+    secs: 1529651486
+    nsecs: 468585558
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "4692"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "111"
+      - 
+        key: "Tx sequence number:"
+        value: "126"
+      - 
+        key: "Rx total bytes:"
+        value: "14684511"
+      - 
+        key: "Tx total bytes:"
+        value: "678158"
+      - 
+        key: "Rx speed:"
+        value: "25420.000000"
+      - 
+        key: "Tx speed:"
+        value: "2525.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "880"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.923042"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6438"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999607"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.264233"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287523"
+      - 
+        key: "Last remote time (s)"
+        value: "820.007536000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.441852570"
+[rosout][INFO] 2018-06-22 10:11:28,000: header: 
+  seq: 762
+  stamp: 
+    secs: 1529651487
+    nsecs: 968120428
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "5263"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "170"
+      - 
+        key: "Tx sequence number:"
+        value: "190"
+      - 
+        key: "Rx total bytes:"
+        value: "14709799"
+      - 
+        key: "Tx total bytes:"
+        value: "680983"
+      - 
+        key: "Rx speed:"
+        value: "25288.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "882"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999991"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6453"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999918"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.273672"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287419"
+      - 
+        key: "Last remote time (s)"
+        value: "821.494486000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.461851597"
+[rosout][INFO] 2018-06-22 10:11:29,529: header: 
+  seq: 763
+  stamp: 
+    secs: 1529651489
+    nsecs: 468126283
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "5836"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "231"
+      - 
+        key: "Tx sequence number:"
+        value: "252"
+      - 
+        key: "Rx total bytes:"
+        value: "14735245"
+      - 
+        key: "Tx total bytes:"
+        value: "683768"
+      - 
+        key: "Rx speed:"
+        value: "25446.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "883"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962987"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6468"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000238"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.262599"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287353"
+      - 
+        key: "Last remote time (s)"
+        value: "822.981857000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.481513500"
+[rosout][INFO] 2018-06-22 10:11:30,012: wait for FCU connection
+[rosout][INFO] 2018-06-22 10:11:30,013: FCU connected !
+[rosout][INFO] 2018-06-22 10:11:31,016: header: 
+  seq: 764
+  stamp: 
+    secs: 1529651490
+    nsecs: 967875609
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "6410"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "37"
+      - 
+        key: "Tx sequence number:"
+        value: "60"
+      - 
+        key: "Rx total bytes:"
+        value: "14760663"
+      - 
+        key: "Tx total bytes:"
+        value: "686593"
+      - 
+        key: "Rx speed:"
+        value: "25418.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "885"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962937"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6483"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999716"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.339401"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287335"
+      - 
+        key: "Last remote time (s)"
+        value: "824.466249000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.500882149"
+[rosout][INFO] 2018-06-22 10:11:31,991: header: 
+  seq: 765
+  stamp: 
+    secs: 1529651491
+    nsecs: 968362453
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "6795"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "166"
+      - 
+        key: "Tx sequence number:"
+        value: "101"
+      - 
+        key: "Rx total bytes:"
+        value: "14777749"
+      - 
+        key: "Tx total bytes:"
+        value: "688398"
+      - 
+        key: "Rx speed:"
+        value: "17086.000000"
+      - 
+        key: "Tx speed:"
+        value: "1805.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "886"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962925"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6493"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999603"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.359814"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287285"
+      - 
+        key: "Last remote time (s)"
+        value: "825.459533000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.513665676"
+[rosout][INFO] 2018-06-22 10:11:33,504: header: 
+  seq: 766
+  stamp: 
+    secs: 1529651493
+    nsecs: 468540279
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "7367"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "226"
+      - 
+        key: "Tx sequence number:"
+        value: "162"
+      - 
+        key: "Rx total bytes:"
+        value: "14803117"
+      - 
+        key: "Tx total bytes:"
+        value: "691158"
+      - 
+        key: "Rx speed:"
+        value: "25368.000000"
+      - 
+        key: "Tx speed:"
+        value: "2760.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "887"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.928527"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6508"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999520"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.271480"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287310"
+      - 
+        key: "Last remote time (s)"
+        value: "826.942419000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.532688141"
+[rosout][INFO] 2018-06-22 10:11:35,020: header: 
+  seq: 767
+  stamp: 
+    secs: 1529651494
+    nsecs: 968423969
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "7942"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "33"
+      - 
+        key: "Tx sequence number:"
+        value: "226"
+      - 
+        key: "Rx total bytes:"
+        value: "14828575"
+      - 
+        key: "Tx total bytes:"
+        value: "693983"
+      - 
+        key: "Rx speed:"
+        value: "25458.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "889"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000001"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6523"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000003"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.200114"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287289"
+      - 
+        key: "Last remote time (s)"
+        value: "828.428081000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.551492214"
+[rosout][INFO] 2018-06-22 10:11:35,077: setting mode to OFFBOARD
+[rosout][INFO] 2018-06-22 10:11:35,630: Current mode changed to: OFFBOARD
+[rosout][INFO] 2018-06-22 10:11:36,506: header: 
+  seq: 768
+  stamp: 
+    secs: 1529651496
+    nsecs: 468247109
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "8529"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "108"
+      - 
+        key: "Tx sequence number:"
+        value: "33"
+      - 
+        key: "Rx total bytes:"
+        value: "14854232"
+      - 
+        key: "Tx total bytes:"
+        value: "696786"
+      - 
+        key: "Rx speed:"
+        value: "25657.000000"
+      - 
+        key: "Tx speed:"
+        value: "2803.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "890"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.965531"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6538"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000140"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.265636"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287244"
+      - 
+        key: "Last remote time (s)"
+        value: "829.914297000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.570065737"
+[rosout][INFO] 2018-06-22 10:11:37,523: header: 
+  seq: 769
+  stamp: 
+    secs: 1529651497
+    nsecs: 468326845
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "8923"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "246"
+      - 
+        key: "Tx sequence number:"
+        value: "75"
+      - 
+        key: "Rx total bytes:"
+        value: "14871429"
+      - 
+        key: "Tx total bytes:"
+        value: "698656"
+      - 
+        key: "Rx speed:"
+        value: "17197.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "891"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000016"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6548"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000179"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.204117"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287277"
+      - 
+        key: "Last remote time (s)"
+        value: "830.902804000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.582353354"
+[rosout][INFO] 2018-06-22 10:11:39,009: header: 
+  seq: 770
+  stamp: 
+    secs: 1529651498
+    nsecs: 968478022
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "9507"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "62"
+      - 
+        key: "Tx sequence number:"
+        value: "139"
+      - 
+        key: "Rx total bytes:"
+        value: "14896943"
+      - 
+        key: "Tx total bytes:"
+        value: "701481"
+      - 
+        key: "Rx speed:"
+        value: "25514.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "893"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999986"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6563"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999855"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.250397"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287206"
+      - 
+        key: "Last remote time (s)"
+        value: "832.386821000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.600648880"
+[rosout][INFO] 2018-06-22 10:11:40,143: Arming client
+[rosout][INFO] 2018-06-22 10:11:40,510: header: 
+  seq: 771
+  stamp: 
+    secs: 1529651500
+    nsecs: 468151430
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "10097"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "140"
+      - 
+        key: "Tx sequence number:"
+        value: "202"
+      - 
+        key: "Rx total bytes:"
+        value: "14922665"
+      - 
+        key: "Tx total bytes:"
+        value: "704311"
+      - 
+        key: "Rx speed:"
+        value: "25722.000000"
+      - 
+        key: "Tx speed:"
+        value: "2830.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "894"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000029"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Standby"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.15"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "100.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6578"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000303"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.264901"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287183"
+      - 
+        key: "Last remote time (s)"
+        value: "833.874183000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.618738890"
+[rosout][INFO] 2018-06-22 10:11:40,695: 	 Vehicle armed: True
+[rosout][INFO] 2018-06-22 10:11:40,697: 	 Current mode: OFFBOARD
+[rosout][INFO] 2018-06-22 10:11:40,699: End changeOffboardModeAndArm with 213 iterations
+[rosout][INFO] 2018-06-22 10:11:40,700: Navigation __init__
+[rosout][INFO] 2018-06-22 10:11:40,702: **Start executeMission
+[rosout][INFO] 2018-06-22 10:11:40,704: **Start gotoPose: [3.0, 3.0, 3.0, 0.0, 0.0, 0.71, 0.71]
+[rosout][INFO] 2018-06-22 10:11:42,010: header: 
+  seq: 772
+  stamp: 
+    secs: 1529651501
+    nsecs: 968337549
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "10710"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "241"
+      - 
+        key: "Tx sequence number:"
+        value: "10"
+      - 
+        key: "Rx total bytes:"
+        value: "14949198"
+      - 
+        key: "Tx total bytes:"
+        value: "707136"
+      - 
+        key: "Rx speed:"
+        value: "26533.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "896"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999984"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.13"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "99.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6593"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999844"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.277353"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287111"
+      - 
+        key: "Last remote time (s)"
+        value: "835.372026000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.636285782"
+[rosout][INFO] 2018-06-22 10:11:43,504: header: 
+  seq: 773
+  stamp: 
+    secs: 1529651503
+    nsecs: 468021308
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "11313"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "76"
+      - 
+        key: "Tx sequence number:"
+        value: "72"
+      - 
+        key: "Rx total bytes:"
+        value: "14975352"
+      - 
+        key: "Tx total bytes:"
+        value: "709921"
+      - 
+        key: "Rx speed:"
+        value: "26154.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "897"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000005"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.09"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "97.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6608"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000068"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.290646"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.287069"
+      - 
+        key: "Last remote time (s)"
+        value: "836.867445000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.653127432"
+[rosout][INFO] 2018-06-22 10:11:45,010: header: 
+  seq: 774
+  stamp: 
+    secs: 1529651504
+    nsecs: 968044797
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "11925"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "176"
+      - 
+        key: "Tx sequence number:"
+        value: "136"
+      - 
+        key: "Rx total bytes:"
+        value: "15001786"
+      - 
+        key: "Tx total bytes:"
+        value: "712746"
+      - 
+        key: "Rx speed:"
+        value: "26434.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "899"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999987"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.05"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "95.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6623"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999879"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.267844"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.286995"
+      - 
+        key: "Last remote time (s)"
+        value: "838.362363000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.669261456"
+[rosout][INFO] 2018-06-22 10:11:46,007: header: 
+  seq: 775
+  stamp: 
+    secs: 1529651505
+    nsecs: 968422881
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "12330"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "69"
+      - 
+        key: "Tx sequence number:"
+        value: "178"
+      - 
+        key: "Rx total bytes:"
+        value: "15019302"
+      - 
+        key: "Tx total bytes:"
+        value: "714616"
+      - 
+        key: "Rx speed:"
+        value: "17516.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "900"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999996"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "12.02"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "93.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6633"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999958"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.355211"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.286979"
+      - 
+        key: "Last remote time (s)"
+        value: "839.360511000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.679675341"
+[rosout][INFO] 2018-06-22 10:11:47,512: header: 
+  seq: 776
+  stamp: 
+    secs: 1529651507
+    nsecs: 467608001
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "12934"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "161"
+      - 
+        key: "Tx sequence number:"
+        value: "238"
+      - 
+        key: "Rx total bytes:"
+        value: "15045409"
+      - 
+        key: "Tx total bytes:"
+        value: "717311"
+      - 
+        key: "Rx speed:"
+        value: "26107.000000"
+      - 
+        key: "Tx speed:"
+        value: "2695.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "901"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000067"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.99"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "91.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6648"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000671"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.296900"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.286965"
+      - 
+        key: "Last remote time (s)"
+        value: "840.855972000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.694705963"
+[rosout][INFO] 2018-06-22 10:11:48,512: header: 
+  seq: 777
+  stamp: 
+    secs: 1529651508
+    nsecs: 467976104
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "13338"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "53"
+      - 
+        key: "Tx sequence number:"
+        value: "24"
+      - 
+        key: "Rx total bytes:"
+        value: "15062847"
+      - 
+        key: "Tx total bytes:"
+        value: "719181"
+      - 
+        key: "Rx speed:"
+        value: "17438.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "902"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962997"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.96"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "89.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6658"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000341"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.345156"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.286940"
+      - 
+        key: "Last remote time (s)"
+        value: "841.855071000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.704331875"
+[rosout][INFO] 2018-06-22 10:11:49,503: header: 
+  seq: 778
+  stamp: 
+    secs: 1529651509
+    nsecs: 468431443
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "13742"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "201"
+      - 
+        key: "Tx sequence number:"
+        value: "66"
+      - 
+        key: "Rx total bytes:"
+        value: "15080311"
+      - 
+        key: "Tx total bytes:"
+        value: "721051"
+      - 
+        key: "Rx speed:"
+        value: "17464.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "903"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999986"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.93"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "87.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "6668"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999858"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.248573"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.286877"
+      - 
+        key: "Last remote time (s)"
+        value: "842.852571000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.709963083"
+[rosout][INFO] 2018-06-22 10:11:50,723: **End   gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.71, -0.71]
+[rosout][INFO] 2018-06-22 10:11:50,725: **Start yaw360: [2.83, 3.12, 3.02, -0.0, 0.01, -0.71, -0.71]
+[rosout][INFO] 2018-06-22 10:11:50,727: Start ePose: [-0.001835809436580805, -0.013530106783796488, 1.5684807481531902]
+[rosout][INFO] 2018-06-22 10:11:50,728: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.78, 0.63]
+[rosout][INFO] 2018-06-22 10:11:51,018: header: 
+  seq: 779
+  stamp: 
+    secs: 1529651510
+    nsecs: 967992297
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "14353"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "44"
+      - 
+        key: "Tx sequence number:"
+        value: "130"
+      - 
+        key: "Rx total bytes:"
+        value: "15106681"
+      - 
+        key: "Tx total bytes:"
+        value: "723876"
+      - 
+        key: "Rx speed:"
+        value: "26370.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "905"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.037063"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.89"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "85.0"
+  - 
+    level: 1
+    name: "mavros: Time Sync"
+    message: "Frequency too high."
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "8"
+      - 
+        key: "Frequency (Hz)"
+        value: "11.324919"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.179632"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.281750"
+      - 
+        key: "Last remote time (s)"
+        value: "844.347586000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.611583948"
+[rosout][INFO] 2018-06-22 10:11:51,226: **End   gotoPose: [2.82, 3.1, 3.03, 0.01, 0.01, -0.75, -0.66]
+[rosout][INFO] 2018-06-22 10:11:51,227: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.84, 0.55]
+[rosout][INFO] 2018-06-22 10:11:51,729: **End   gotoPose: [2.79, 3.1, 3.04, 0.0, 0.0, -0.81, -0.58]
+[rosout][INFO] 2018-06-22 10:11:51,731: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.89, 0.46]
+[rosout][INFO] 2018-06-22 10:11:52,230: **End   gotoPose: [2.76, 3.11, 3.03, -0.0, 0.0, -0.87, -0.49]
+[rosout][INFO] 2018-06-22 10:11:52,232: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.93, 0.36]
+[rosout][INFO] 2018-06-22 10:11:52,514: header: 
+  seq: 780
+  stamp: 
+    secs: 1529651512
+    nsecs: 467808575
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "14958"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "137"
+      - 
+        key: "Tx sequence number:"
+        value: "192"
+      - 
+        key: "Rx total bytes:"
+        value: "15132939"
+      - 
+        key: "Tx total bytes:"
+        value: "726661"
+      - 
+        key: "Rx speed:"
+        value: "26258.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "906"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.963012"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.85"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "82.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "23"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.425121"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.216636"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.272109"
+      - 
+        key: "Last remote time (s)"
+        value: "845.843460000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.615146637"
+[rosout][INFO] 2018-06-22 10:11:52,730: **End   gotoPose: [2.74, 3.12, 3.04, -0.0, 0.0, -0.92, -0.39]
+[rosout][INFO] 2018-06-22 10:11:52,732: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.97, 0.26]
+[rosout][INFO] 2018-06-22 10:11:53,232: **End   gotoPose: [2.73, 3.12, 3.05, -0.01, 0.01, -0.96, -0.29]
+[rosout][INFO] 2018-06-22 10:11:53,233: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.99, 0.16]
+[rosout][INFO] 2018-06-22 10:11:53,499: header: 
+  seq: 781
+  stamp: 
+    secs: 1529651513
+    nsecs: 467985828
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "15364"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "31"
+      - 
+        key: "Tx sequence number:"
+        value: "234"
+      - 
+        key: "Rx total bytes:"
+        value: "15150506"
+      - 
+        key: "Tx total bytes:"
+        value: "728531"
+      - 
+        key: "Rx speed:"
+        value: "17567.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "907"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000012"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.82"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "81.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "33"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.291914"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.244502"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.259029"
+      - 
+        key: "Last remote time (s)"
+        value: "846.841409000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.617918253"
+[rosout][INFO] 2018-06-22 10:11:53,736: **End   gotoPose: [2.74, 3.12, 3.04, -0.01, 0.01, -0.98, -0.19]
+[rosout][INFO] 2018-06-22 10:11:53,737: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 1.0, 0.05]
+[rosout][INFO] 2018-06-22 10:11:54,236: **End   gotoPose: [2.76, 3.1, 3.04, -0.01, 0.01, -1.0, -0.08]
+[rosout][INFO] 2018-06-22 10:11:54,238: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 1.0, -0.05]
+[rosout][INFO] 2018-06-22 10:11:54,739: **End   gotoPose: [2.79, 3.1, 3.05, -0.01, 0.01, -1.0, 0.02]
+[rosout][INFO] 2018-06-22 10:11:54,740: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.99, -0.16]
+[rosout][INFO] 2018-06-22 10:11:55,010: header: 
+  seq: 782
+  stamp: 
+    secs: 1529651514
+    nsecs: 968252031
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "15975"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "130"
+      - 
+        key: "Tx sequence number:"
+        value: "42"
+      - 
+        key: "Rx total bytes:"
+        value: "15176947"
+      - 
+        key: "Tx total bytes:"
+        value: "731356"
+      - 
+        key: "Rx speed:"
+        value: "26441.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "909"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000008"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.78"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "78.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "48"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.198324"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.204069"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268221"
+      - 
+        key: "Last remote time (s)"
+        value: "848.337745000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.622856617"
+[rosout][INFO] 2018-06-22 10:11:55,238: **End   gotoPose: [2.84, 3.07, 3.02, -0.01, 0.01, -0.99, 0.12]
+[rosout][INFO] 2018-06-22 10:11:55,240: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.97, -0.26]
+[rosout][INFO] 2018-06-22 10:11:55,741: **End   gotoPose: [2.9, 3.05, 3.01, -0.01, 0.01, -0.97, 0.23]
+[rosout][INFO] 2018-06-22 10:11:55,743: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.93, -0.36]
+[rosout][INFO] 2018-06-22 10:11:56,242: **End   gotoPose: [2.97, 3.02, 3.02, -0.01, 0.01, -0.94, 0.33]
+[rosout][INFO] 2018-06-22 10:11:56,244: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.89, -0.45]
+[rosout][INFO] 2018-06-22 10:11:56,511: header: 
+  seq: 783
+  stamp: 
+    secs: 1529651516
+    nsecs: 467967416
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "16578"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "221"
+      - 
+        key: "Tx sequence number:"
+        value: "104"
+      - 
+        key: "Rx total bytes:"
+        value: "15203075"
+      - 
+        key: "Tx total bytes:"
+        value: "734141"
+      - 
+        key: "Rx speed:"
+        value: "26128.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "910"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000004"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.74"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "76.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "63"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.150841"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.281595"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.273495"
+      - 
+        key: "Last remote time (s)"
+        value: "849.833695000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.627813339"
+[rosout][INFO] 2018-06-22 10:11:56,742: **End   gotoPose: [3.03, 3.01, 3.0, -0.01, 0.0, -0.9, 0.43]
+[rosout][INFO] 2018-06-22 10:11:56,744: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.84, -0.54]
+[rosout][INFO] 2018-06-22 10:11:57,245: **End   gotoPose: [3.11, 2.99, 3.01, -0.01, 0.0, -0.86, 0.52]
+[rosout][INFO] 2018-06-22 10:11:57,246: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.78, -0.63]
+[rosout][INFO] 2018-06-22 10:11:57,747: **End   gotoPose: [3.18, 3.0, 3.02, -0.01, -0.0, -0.8, 0.6]
+[rosout][INFO] 2018-06-22 10:11:57,749: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.71, -0.71]
+[rosout][INFO] 2018-06-22 10:11:58,008: header: 
+  seq: 784
+  stamp: 
+    secs: 1529651517
+    nsecs: 967904213
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "17190"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "65"
+      - 
+        key: "Tx sequence number:"
+        value: "168"
+      - 
+        key: "Rx total bytes:"
+        value: "15229568"
+      - 
+        key: "Tx total bytes:"
+        value: "736966"
+      - 
+        key: "Rx speed:"
+        value: "26493.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "912"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000010"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.69"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "73.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "78"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.121578"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.232329"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.274116"
+      - 
+        key: "Last remote time (s)"
+        value: "851.326322000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.633326054"
+[rosout][INFO] 2018-06-22 10:11:58,248: **End   gotoPose: [3.24, 3.01, 3.04, -0.01, -0.0, -0.73, 0.68]
+[rosout][INFO] 2018-06-22 10:11:58,249: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.63, -0.78]
+[rosout][INFO] 2018-06-22 10:11:58,748: **End   gotoPose: [3.29, 3.02, 3.04, -0.0, -0.01, -0.65, 0.76]
+[rosout][INFO] 2018-06-22 10:11:58,749: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.55, -0.84]
+[rosout][INFO] 2018-06-22 10:11:59,250: **End   gotoPose: [3.33, 3.06, 3.02, -0.0, -0.01, -0.57, 0.82]
+[rosout][INFO] 2018-06-22 10:11:59,251: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.46, -0.89]
+[rosout][INFO] 2018-06-22 10:11:59,531: header: 
+  seq: 785
+  stamp: 
+    secs: 1529651519
+    nsecs: 467999635
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "17792"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "155"
+      - 
+        key: "Tx sequence number:"
+        value: "230"
+      - 
+        key: "Rx total bytes:"
+        value: "15255659"
+      - 
+        key: "Tx total bytes:"
+        value: "739751"
+      - 
+        key: "Rx speed:"
+        value: "26091.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "913"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962994"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.66"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "71.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "93"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.101659"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.245575"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268083"
+      - 
+        key: "Last remote time (s)"
+        value: "852.824363000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.638630152"
+[rosout][INFO] 2018-06-22 10:11:59,751: **End   gotoPose: [3.35, 3.1, 3.02, -0.0, -0.01, -0.48, 0.88]
+[rosout][INFO] 2018-06-22 10:11:59,754: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.36, -0.93]
+[rosout][INFO] 2018-06-22 10:12:00,253: **End   gotoPose: [3.35, 3.15, 3.02, -0.0, -0.01, -0.39, 0.92]
+[rosout][INFO] 2018-06-22 10:12:00,255: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.26, -0.97]
+[rosout][INFO] 2018-06-22 10:12:00,755: **End   gotoPose: [3.34, 3.19, 3.02, -0.0, -0.01, -0.29, 0.96]
+[rosout][INFO] 2018-06-22 10:12:00,757: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.16, -0.99]
+[rosout][INFO] 2018-06-22 10:12:01,018: header: 
+  seq: 786
+  stamp: 
+    secs: 1529651520
+    nsecs: 968046879
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "18402"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "253"
+      - 
+        key: "Tx sequence number:"
+        value: "38"
+      - 
+        key: "Rx total bytes:"
+        value: "15282099"
+      - 
+        key: "Tx total bytes:"
+        value: "742576"
+      - 
+        key: "Rx speed:"
+        value: "26440.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "915"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.037003"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.61"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "68.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "108"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.087365"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.214167"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.272270"
+      - 
+        key: "Last remote time (s)"
+        value: "854.320208000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.642354727"
+[rosout][INFO] 2018-06-22 10:12:01,258: **End   gotoPose: [3.32, 3.24, 3.02, -0.0, -0.01, -0.19, 0.98]
+[rosout][INFO] 2018-06-22 10:12:01,260: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, 0.05, -1.0]
+[rosout][INFO] 2018-06-22 10:12:01,759: **End   gotoPose: [3.28, 3.29, 3.02, -0.0, -0.01, -0.08, 1.0]
+[rosout][INFO] 2018-06-22 10:12:01,761: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.05, -1.0]
+[rosout][INFO] 2018-06-22 10:12:02,018: header: 
+  seq: 787
+  stamp: 
+    secs: 1529651521
+    nsecs: 968417537
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "18808"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "147"
+      - 
+        key: "Tx sequence number:"
+        value: "80"
+      - 
+        key: "Rx total bytes:"
+        value: "15299666"
+      - 
+        key: "Tx total bytes:"
+        value: "744446"
+      - 
+        key: "Rx speed:"
+        value: "17567.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "916"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.037003"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.59"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "66.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "118"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.079596"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.209894"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.274379"
+      - 
+        key: "Last remote time (s)"
+        value: "855.317877000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.644818544"
+[rosout][INFO] 2018-06-22 10:12:02,261: **End   gotoPose: [3.23, 3.33, 3.01, -0.0, -0.01, 0.02, 1.0]
+[rosout][INFO] 2018-06-22 10:12:02,263: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.16, -0.99]
+[rosout][INFO] 2018-06-22 10:12:02,760: **End   gotoPose: [3.17, 3.35, 2.99, -0.0, -0.02, 0.13, 0.99]
+[rosout][INFO] 2018-06-22 10:12:02,761: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.26, -0.97]
+[rosout][INFO] 2018-06-22 10:12:03,262: **End   gotoPose: [3.11, 3.37, 2.99, -0.0, -0.01, 0.23, 0.97]
+[rosout][INFO] 2018-06-22 10:12:03,263: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.36, -0.93]
+[rosout][INFO] 2018-06-22 10:12:03,514: header: 
+  seq: 788
+  stamp: 
+    secs: 1529651523
+    nsecs: 468324607
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "19411"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "238"
+      - 
+        key: "Tx sequence number:"
+        value: "142"
+      - 
+        key: "Rx total bytes:"
+        value: "15325794"
+      - 
+        key: "Tx total bytes:"
+        value: "747231"
+      - 
+        key: "Rx speed:"
+        value: "26128.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "917"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000009"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.55"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "64.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "133"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.070622"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.369344"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.273493"
+      - 
+        key: "Last remote time (s)"
+        value: "856.813154000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.648532629"
+[rosout][INFO] 2018-06-22 10:12:03,763: **End   gotoPose: [3.05, 3.39, 2.98, -0.0, -0.02, 0.33, 0.94]
+[rosout][INFO] 2018-06-22 10:12:03,765: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.45, -0.89]
+[rosout][INFO] 2018-06-22 10:12:04,265: **End   gotoPose: [2.99, 3.41, 2.99, -0.0, -0.02, 0.43, 0.9]
+[rosout][INFO] 2018-06-22 10:12:04,266: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.54, -0.84]
+[rosout][INFO] 2018-06-22 10:12:04,766: **End   gotoPose: [2.92, 3.42, 3.01, -0.0, -0.02, 0.52, 0.85]
+[rosout][INFO] 2018-06-22 10:12:04,767: **Start gotoPose: [2.83, 3.12, 3.02, -0.0, 0.01, -0.63, -0.78]
+[rosout][INFO] 2018-06-22 10:12:05,012: header: 
+  seq: 789
+  stamp: 
+    secs: 1529651524
+    nsecs: 968516633
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "20022"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "81"
+      - 
+        key: "Tx sequence number:"
+        value: "206"
+      - 
+        key: "Rx total bytes:"
+        value: "15352235"
+      - 
+        key: "Tx total bytes:"
+        value: "750056"
+      - 
+        key: "Rx speed:"
+        value: "26441.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "919"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999964"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.50"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "61.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "148"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999626"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.254561"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.273296"
+      - 
+        key: "Last remote time (s)"
+        value: "858.308355000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.652718067"
+[rosout][INFO] 2018-06-22 10:12:05,268: **End   gotoPose: [2.84, 3.42, 2.99, 0.0, -0.01, 0.61, 0.8]
+[rosout][INFO] 2018-06-22 10:12:05,269: **End yaw360: [2.84, 3.42, 2.99, 0.0, -0.01, 0.61, 0.8]
+[rosout][INFO] 2018-06-22 10:12:05,271: **Start gotoPose: [0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0]
+[rosout][INFO] 2018-06-22 10:12:06,517: header: 
+  seq: 790
+  stamp: 
+    secs: 1529651526
+    nsecs: 467853055
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "20627"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "174"
+      - 
+        key: "Tx sequence number:"
+        value: "11"
+      - 
+        key: "Rx total bytes:"
+        value: "15378490"
+      - 
+        key: "Tx total bytes:"
+        value: "752776"
+      - 
+        key: "Rx speed:"
+        value: "26255.000000"
+      - 
+        key: "Tx speed:"
+        value: "2720.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "920"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999994"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.46"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "59.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "163"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999956"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.219967"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.271943"
+      - 
+        key: "Last remote time (s)"
+        value: "859.805860000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.656448841"
+[rosout][INFO] 2018-06-22 10:12:07,509: header: 
+  seq: 791
+  stamp: 
+    secs: 1529651527
+    nsecs: 468143674
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "21032"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "67"
+      - 
+        key: "Tx sequence number:"
+        value: "53"
+      - 
+        key: "Rx total bytes:"
+        value: "15396044"
+      - 
+        key: "Tx total bytes:"
+        value: "754646"
+      - 
+        key: "Rx speed:"
+        value: "17554.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "921"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999991"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.44"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "57.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "173"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999896"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.261468"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.270453"
+      - 
+        key: "Last remote time (s)"
+        value: "860.803897000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.658566475"
+[rosout][INFO] 2018-06-22 10:12:09,008: header: 
+  seq: 792
+  stamp: 
+    secs: 1529651528
+    nsecs: 968259852
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "21643"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "166"
+      - 
+        key: "Tx sequence number:"
+        value: "117"
+      - 
+        key: "Rx total bytes:"
+        value: "15422485"
+      - 
+        key: "Tx total bytes:"
+        value: "757471"
+      - 
+        key: "Rx speed:"
+        value: "26441.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "923"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999998"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.39"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "55.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "188"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999985"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.278900"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.270545"
+      - 
+        key: "Last remote time (s)"
+        value: "862.298892000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.662754059"
+[rosout][INFO] 2018-06-22 10:12:10,523: header: 
+  seq: 793
+  stamp: 
+    secs: 1529651530
+    nsecs: 468238887
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "22244"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "255"
+      - 
+        key: "Tx sequence number:"
+        value: "179"
+      - 
+        key: "Rx total bytes:"
+        value: "15448503"
+      - 
+        key: "Tx total bytes:"
+        value: "760256"
+      - 
+        key: "Rx speed:"
+        value: "26018.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "924"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999981"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.35"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "52.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "203"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999808"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.317165"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268781"
+      - 
+        key: "Last remote time (s)"
+        value: "863.794132000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.666549444"
+[rosout][INFO] 2018-06-22 10:12:12,012: header: 
+  seq: 794
+  stamp: 
+    secs: 1529651531
+    nsecs: 968216643
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "22849"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "92"
+      - 
+        key: "Tx sequence number:"
+        value: "243"
+      - 
+        key: "Rx total bytes:"
+        value: "15474701"
+      - 
+        key: "Tx total bytes:"
+        value: "763081"
+      - 
+        key: "Rx speed:"
+        value: "26198.000000"
+      - 
+        key: "Tx speed:"
+        value: "2825.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "926"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999976"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.33"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "218"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999767"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.330394"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268350"
+      - 
+        key: "Last remote time (s)"
+        value: "865.289149000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.671615839"
+[rosout][INFO] 2018-06-22 10:12:13,519: header: 
+  seq: 795
+  stamp: 
+    secs: 1529651533
+    nsecs: 468030444
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "23456"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "187"
+      - 
+        key: "Tx sequence number:"
+        value: "49"
+      - 
+        key: "Rx total bytes:"
+        value: "15501043"
+      - 
+        key: "Tx total bytes:"
+        value: "765866"
+      - 
+        key: "Rx speed:"
+        value: "26342.000000"
+      - 
+        key: "Tx speed:"
+        value: "2785.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "927"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999997"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.33"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "233"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999973"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.286738"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268676"
+      - 
+        key: "Last remote time (s)"
+        value: "866.784892000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.676297188"
+[rosout][INFO] 2018-06-22 10:12:14,509: header: 
+  seq: 796
+  stamp: 
+    secs: 1529651534
+    nsecs: 468420978
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "23862"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "81"
+      - 
+        key: "Tx sequence number:"
+        value: "91"
+      - 
+        key: "Rx total bytes:"
+        value: "15518649"
+      - 
+        key: "Tx total bytes:"
+        value: "767736"
+      - 
+        key: "Rx speed:"
+        value: "17606.000000"
+      - 
+        key: "Tx speed:"
+        value: "1870.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "928"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.962938"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "OFFBOARD"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.33"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "243"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999725"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.368169"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.266980"
+      - 
+        key: "Last remote time (s)"
+        value: "867.781912000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.679482937"
+[rosout][INFO] 2018-06-22 10:12:15,300: **End   gotoPose: [-0.08, -0.32, 1.05, 0.0, 0.0, 1.0, -0.0]
+[rosout][INFO] 2018-06-22 10:12:15,301: trying to land
+[rosout][INFO] 2018-06-22 10:12:16,022: header: 
+  seq: 797
+  stamp: 
+    secs: 1529651535
+    nsecs: 967805075
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "24464"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "171"
+      - 
+        key: "Tx sequence number:"
+        value: "142"
+      - 
+        key: "Rx total bytes:"
+        value: "15544840"
+      - 
+        key: "Tx total bytes:"
+        value: "769696"
+      - 
+        key: "Rx speed:"
+        value: "26191.000000"
+      - 
+        key: "Tx speed:"
+        value: "1960.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "930"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.000042"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.32"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "258"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000431"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.302100"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268834"
+      - 
+        key: "Last remote time (s)"
+        value: "869.275917000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.684494734"
+[rosout][INFO] 2018-06-22 10:12:17,009: header: 
+  seq: 798
+  stamp: 
+    secs: 1529651536
+    nsecs: 968061158
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "24859"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "54"
+      - 
+        key: "Tx sequence number:"
+        value: "164"
+      - 
+        key: "Rx total bytes:"
+        value: "15562191"
+      - 
+        key: "Tx total bytes:"
+        value: "770266"
+      - 
+        key: "Rx speed:"
+        value: "17351.000000"
+      - 
+        key: "Tx speed:"
+        value: "570.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "931"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.037056"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.32"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "268"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000188"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.355441"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268629"
+      - 
+        key: "Last remote time (s)"
+        value: "870.272269000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.687946081"
+[rosout][INFO] 2018-06-22 10:12:17,999: header: 
+  seq: 799
+  stamp: 
+    secs: 1529651537
+    nsecs: 968550453
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "25252"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "191"
+      - 
+        key: "Tx sequence number:"
+        value: "186"
+      - 
+        key: "Rx total bytes:"
+        value: "15579515"
+      - 
+        key: "Tx total bytes:"
+        value: "770836"
+      - 
+        key: "Rx speed:"
+        value: "17324.000000"
+      - 
+        key: "Tx speed:"
+        value: "570.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "932"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999999"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.32"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "278"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999984"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.289315"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268793"
+      - 
+        key: "Last remote time (s)"
+        value: "871.264932000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.692049742"
+[rosout][INFO] 2018-06-22 10:12:19,514: header: 
+  seq: 800
+  stamp: 
+    secs: 1529651539
+    nsecs: 468081635
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "25844"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "15"
+      - 
+        key: "Tx sequence number:"
+        value: "217"
+      - 
+        key: "Rx total bytes:"
+        value: "15605481"
+      - 
+        key: "Tx total bytes:"
+        value: "771646"
+      - 
+        key: "Rx speed:"
+        value: "25966.000000"
+      - 
+        key: "Tx speed:"
+        value: "810.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "933"
+      - 
+        key: "Frequency (Hz)"
+        value: "0.999982"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.32"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "293"
+      - 
+        key: "Frequency (Hz)"
+        value: "9.999824"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.341999"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.268852"
+      - 
+        key: "Last remote time (s)"
+        value: "872.752527000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.700832605"
+[rosout][INFO] 2018-06-22 10:12:21,004: header: 
+  seq: 801
+  stamp: 
+    secs: 1529651540
+    nsecs: 968003393
+  frame_id: ''
+status: 
+  - 
+    level: 0
+    name: "mavros: FCU connection"
+    message: "connected"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Received packets:"
+        value: "26433"
+      - 
+        key: "Dropped packets:"
+        value: "0"
+      - 
+        key: "Buffer overruns:"
+        value: "0"
+      - 
+        key: "Parse errors:"
+        value: "0"
+      - 
+        key: "Rx sequence number:"
+        value: "92"
+      - 
+        key: "Tx sequence number:"
+        value: "251"
+      - 
+        key: "Rx total bytes:"
+        value: "15631351"
+      - 
+        key: "Tx total bytes:"
+        value: "772521"
+      - 
+        key: "Rx speed:"
+        value: "25870.000000"
+      - 
+        key: "Tx speed:"
+        value: "875.000000"
+  - 
+    level: 0
+    name: "mavros: GPS"
+    message: "3D fix"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Satellites visible"
+        value: "10"
+      - 
+        key: "Fix type"
+        value: "3"
+      - 
+        key: "EPH (m)"
+        value: "0.00"
+      - 
+        key: "EPV (m)"
+        value: "0.00"
+  - 
+    level: 0
+    name: "mavros: Heartbeat"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Heartbeats since startup"
+        value: "935"
+      - 
+        key: "Frequency (Hz)"
+        value: "1.037048"
+      - 
+        key: "Vehicle type"
+        value: "Quadrotor"
+      - 
+        key: "Autopilot type"
+        value: "PX4 Autopilot"
+      - 
+        key: "Mode"
+        value: "AUTO.LAND"
+      - 
+        key: "System status"
+        value: "Active"
+  - 
+    level: 0
+    name: "mavros: System"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Sensor present"
+        value: "0x00000000"
+      - 
+        key: "Sensor enabled"
+        value: "0x00000000"
+      - 
+        key: "Sensor helth"
+        value: "0x00000000"
+      - 
+        key: "CPU Load (%)"
+        value: "0.0"
+      - 
+        key: "Drop rate (%)"
+        value: "0.0"
+      - 
+        key: "Errors comm"
+        value: "0"
+      - 
+        key: "Errors count #1"
+        value: "0"
+      - 
+        key: "Errors count #2"
+        value: "0"
+      - 
+        key: "Errors count #3"
+        value: "0"
+      - 
+        key: "Errors count #4"
+        value: "0"
+  - 
+    level: 0
+    name: "mavros: Battery"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Voltage"
+        value: "11.32"
+      - 
+        key: "Current"
+        value: "-1.0"
+      - 
+        key: "Remaining"
+        value: "51.0"
+  - 
+    level: 0
+    name: "mavros: Time Sync"
+    message: "Normal"
+    hardware_id: "udp://:14540@127.0.0.1:14540"
+    values: 
+      - 
+        key: "Timesyncs since startup"
+        value: "308"
+      - 
+        key: "Frequency (Hz)"
+        value: "10.000107"
+      - 
+        key: "Last RTT (ms)"
+        value: "0.279716"
+      - 
+        key: "Mean RTT (ms)"
+        value: "0.271105"
+      - 
+        key: "Last remote time (s)"
+        value: "874.240211000"
+      - 
+        key: "Estimated time offset (s)"
+        value: "1529650666.711204767"
+[rosout][INFO] 2018-06-22 10:12:21,821: 	 Vehicle armed: False
+[rosout][INFO] 2018-06-22 10:12:21,822: 	 Current mode: AUTO.LAND
+[rosout][INFO] 2018-06-22 10:12:21,823: 	 Vehicle armed: False
+[rosout][INFO] 2018-06-22 10:12:21,825: 	 Current mode: AUTO.LAND
+[rosout][INFO] 2018-06-22 10:12:21,828: landed at: [-0.04, -0.45, 0.08, 0.06, 0.0, 1.0, -0.01] 
+[rosout][INFO] 2018-06-22 10:12:21,830: **End executeMission
+[rospy.core][INFO] 2018-06-22 10:12:21,831: signal_shutdown [atexit]
+[rospy.internal][INFO] 2018-06-22 10:12:21,837: topic[/mavros/setpoint_position/local] removing connection to /mavros
+[rospy.internal][INFO] 2018-06-22 10:12:21,838: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2018-06-22 10:12:21,838: topic[/mavros/state] removing connection to http://shairubin-Latitude-5490:43831/
+[rospy.internal][INFO] 2018-06-22 10:12:21,839: topic[/clock] removing connection to http://shairubin-Latitude-5490:33933/
+[rospy.internal][WARNING] 2018-06-22 10:12:21,840: Unknown error initiating TCP/IP socket to shairubin-Latitude-5490:38945 (http://shairubin-Latitude-5490:33933/): Traceback (most recent call last):
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 558, in connect
+    self.read_header()
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 653, in read_header
+    self._validate_header(read_ros_handshake_header(sock, self.read_buff, self.protocol.buff_size))
+AttributeError: 'NoneType' object has no attribute 'buff_size'
+
+[rospy.topics][ERROR] 2018-06-22 10:12:21,840: Traceback (most recent call last):
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/topics.py", line 326, in close
+    c.close()
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 841, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[rospy.internal][INFO] 2018-06-22 10:12:21,840: topic[/mavros/local_position/pose] removing connection to http://shairubin-Latitude-5490:43831/
+[rospy.internal][INFO] 2018-06-22 10:12:21,841: topic[/diagnostics] removing connection to http://shairubin-Latitude-5490:43831/
+[rospy.topics][ERROR] 2018-06-22 10:12:21,841: Traceback (most recent call last):
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/topics.py", line 326, in close
+    c.close()
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 841, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[rospy.impl.masterslave][INFO] 2018-06-22 10:12:21,841: atexit
+[rospy.internal][WARNING] 2018-06-22 10:12:21,842: Unknown error initiating TCP/IP socket to shairubin-Latitude-5490:49211 (http://shairubin-Latitude-5490:43831/): Traceback (most recent call last):
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 558, in connect
+    self.read_header()
+  File "/opt/ros/lunar/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 653, in read_header
+    self._validate_header(read_ros_handshake_header(sock, self.read_buff, self.protocol.buff_size))
+AttributeError: 'NoneType' object has no attribute 'buff_size'
+
