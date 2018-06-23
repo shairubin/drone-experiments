@@ -1,0 +1,7 @@
+pub_rate: 1.0 # Optional
+base_path: '' # Optional, prepended to all diagnostic output
+analyzers:
+  mavros:
+    type: GenericAnalyzer
+    path: mavros
+    contains: 'GPS'

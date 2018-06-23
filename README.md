@@ -32,3 +32,6 @@ Essentially, this test script is all you need to understand the development envi
 11. . ~/catkin_ws/devel/setup.bash
 12. rospack depends1 py-control-with-mavros -- verify you get all the packages above
 13. now you should be able to run the rosrun command above
+
+## Launch aggergator mode 
+1. roslaunch py-control-with-mavros aggregator.luanch
