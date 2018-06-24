@@ -33,5 +33,11 @@ Essentially, this test script is all you need to understand the development envi
 12. rospack depends1 py-control-with-mavros -- verify you get all the packages above
 13. now you should be able to run the rosrun command above
 
-## Launch aggergator mode 
-1. roslaunch py-control-with-mavros aggregator.luanch
+## Collecting Diagnostics  
+1. Set up development environment as above 
+2. open one more uxterm 
+3. In this uxterm do 'source ~/catkin_ws/src/my_scripts/catkin.sh' 
+4. start collecting data from /Diagnostics topic. In a seperate directory do: 'rosbag record -O <bag filename> /diagnostics'
+5. Do the  Sample run as above 
+6. once Sample run finished - stop collecting (CTRL-C)
+7. now extract Diagnostics data into CSV files: 'rosrun diagnostic_analysis export_csv.py <bag filename>.bag -d .'. You will get an 'output' file   
