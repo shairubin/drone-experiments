@@ -16,7 +16,7 @@ Essentially, this test script is all you need to understand the development envi
 6. in uxterm4 run './src/ex1-control-with-mavros/start_gazebo_ros.sh <bool>' bool is either 'true' or 'false' to indicate gazebo with/without ui
 
 ## Sample run 
-1. In uxterm1 run 'rosrun py-control-with-mavros offb_node.py'
+1. In uxterm1 run *rosrun py-control-with-mavros offb_node.py*
 
 ## Set up ROS environment (lunar)
 1. source /opt/ros/lunar/setup.sh
@@ -33,11 +33,12 @@ Essentially, this test script is all you need to understand the development envi
 12. rospack depends1 py-control-with-mavros -- verify you get all the packages above
 13. now you should be able to run the rosrun command above
 
-## Collecting Diagnostics  
+## Collecting Diagnostics and messages   
 1. Set up development environment as above 
-2. open one more uxterm 
-3. In this uxterm do 'source ~/catkin_ws/src/my_scripts/catkin.sh' 
+2. Open one more uxterm 
+3. In this uxterm do *source ~/catkin_ws/src/my_scripts/catkin.sh* 
 4. start collecting data from /Diagnostics topic. In a seperate directory do: 'rosbag record -O <bag filename> /diagnostics'
-5. Do the  Sample run as above 
-6. once Sample run finished - stop collecting (CTRL-C)
-7. now extract Diagnostics data into CSV files: 'rosrun diagnostic_analysis export_csv.py <bag filename>.bag -d .'. You will get an 'output' file   
+5. Do the  Sample/DEMO run as above 
+6. Once Sample run finished - stop collecting (CTRL-C)
+7. Extract Diagnostics data into CSV files: 'rosrun diagnostic_analysis export_csv.py <bag filename>.bag -d .'. You will get an 'output' file
+8. On another note *rostopic echo <topic name>* will print messages   
