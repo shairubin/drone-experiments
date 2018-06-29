@@ -160,8 +160,12 @@ def main():
         changeOffboardModeAndArm(commHub)
         navigation = Navigation(commHub)
         executeMission(commHub, navigation)
-    except rospy.ROSInterruptException:
-        pass
+#    except rospy.ROSInterruptException:
+#        pass
+    except Exception as error:
+        rospy.logerr("Caught an exception: "+str(error) + 'Exiting!')
+        print ("Caught an exception: "+str(error)+ 'Exiting!')
+        quit() 
 
 class CommunicationHub:
 

@@ -2,6 +2,11 @@
 import rospy
 from tf.transformations import quaternion_from_euler, euler_from_quaternion
 import math
+class LandError(Exception):
+    def __init__(self, value):
+        self.value = value
+    def __str__(self):
+        return repr(self.value)
 """
 This  module implements compund control actions to the drone.
 To generate HTML documentation for this module issue the
@@ -64,13 +69,15 @@ class Navigation:
         loops = 0
         while (land_response.success == False and loops < 200):
           loops+=1 
-          if (loops % 50 == 0):
+          if (loops % 20 == 0):
             rospy.loginfo("sending landing command again, Counter: %d" , loops)
           land_response = self.commHub.land_client(altitude = 0, latitude = 0, longitude = 0, min_pitch = 0, yaw = 0)
           self.commHub.rate.sleep()
     # wait for engines to stop 
-        if (loops == 200):
+        if (loops >= 199):
             rospy.logerr("Cannot land!")
+            raise LandError("Cannot land")
+
         
         while (self.commHub.getCurrentState().armed == True):
             self.commHub.rate.sleep()
