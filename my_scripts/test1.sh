@@ -12,7 +12,7 @@ echo ""
 
 sleep 2
 echo "start ros nodes"
-$HOME/catkin_ws/src/ex1-control-with-mavros/start_ros_nodes.sh &
+$HOME/catkin_ws/src/my_scripts/start_ros_nodes.sh &
 sleep 4 
 
 echo "start px4 simulator"
@@ -21,7 +21,7 @@ sleep 4
 
 echo "start gazebo simulator"
 sleep 2
-$HOME/catkin_ws/src/ex1-control-with-mavros/start_gazebo_ros.sh true  $1 &
+$HOME/catkin_ws/src/my_scripts/start_gazebo_ros.sh true  $1 &
 sleep 6
 
 
