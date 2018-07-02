@@ -22,7 +22,7 @@ sleep 4
 echo "start gazebo simulator"
 sleep 2
 $HOME/catkin_ws/src/my_scripts/start_gazebo_ros.sh true  $1 &
-sleep 6
+sleep 5
 
 
 
@@ -30,7 +30,7 @@ sleep 6
 rosrun py-control-with-mavros offb_node.py
 # end of 	test section
 
-sleep 3
+sleep 2
 echo "kill ROS nodes"
 $HOME/catkin_ws/src/ex1-control-with-mavros/kill_ros_nodes.sh
 

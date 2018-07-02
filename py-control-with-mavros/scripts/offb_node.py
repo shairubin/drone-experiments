@@ -11,11 +11,12 @@ from mavros_msgs.srv import SetMode, CommandBool, CommandTOL
 from diagnostic_msgs.msg import DiagnosticStatus, DiagnosticArray
 
 #current_state = State() 
-current_pose = PoseStamped() 
+#current_pose = PoseStamped() 
 current_diagnostic = DiagnosticArray() 
+
 def state_cb(state):    # when state changed this function will be called 
     global current_state
-    rospy.logdebug("State callback function!")
+    rospy.loginfo("State callback function!")
     current_state = state
     rospy.logdebug(pprint.pformat(state))
 
@@ -34,7 +35,7 @@ rospy.init_node('offb_node', anonymous=True)
 
 
 def setup(commHub):     
-    global current_state
+    #global current_state
     startUpPose = PoseStamped()
     startUpPose.pose.position.x = 0
     startUpPose.pose.position.y = 0
@@ -49,51 +50,51 @@ def setup(commHub):
 
     rospy.loginfo('wait for FCU connection')    
     # wait for FCU connection
-    while not current_state.connected:
+    while not commHub.getCurrentState().connected:
         commHub.rate.sleep()    
     rospy.loginfo('FCU connected !')    
 
 
 def changeOffboardModeAndArm(commHub):
-    global current_state
+    #global current_state
     startUpPose = PoseStamped()
     startUpPose.pose.position.x = 0
     startUpPose.pose.position.y = 0
     startUpPose.pose.position.z = 2
 
-    prev_state = current_state 
+    prev_state = commHub.getCurrentState()
     duration = rospy.Duration(5.)
     last_request = rospy.get_rostime()
     loops =0; 
-    while (not rospy.is_shutdown() and current_state.armed == False): 
+    while (not rospy.is_shutdown() and commHub.getCurrentState().armed == False): 
         loops+=1
         if (loops % 30 ==0 ):
-            rospy.logdebug("Current mode: %s " % current_state.mode)
+            rospy.logdebug("Current mode: %s " % commHub.getCurrentState().mode)
         now = rospy.get_rostime()
-        if current_state.mode != "OFFBOARD" and (now - last_request > duration) :
+        if commHub.getCurrentState().mode != "OFFBOARD" and (now - last_request > duration) :
             rospy.loginfo('setting mode to OFFBOARD')
             commHub.set_mode_client(base_mode=0, custom_mode="OFFBOARD")
             last_request = now 
         else:
-            if not current_state.armed and (now - last_request > duration):
+            if not commHub.getCurrentState().armed and (now - last_request > duration):
                rospy.loginfo('Arming client')
                commHub.arming_client_cmd(True)
                last_request = now 
 
         # older versions of PX4 always return success==True, so better to check Status instead
-        if prev_state.armed != current_state.armed:
-            rospy.loginfo("Vehicle armed: %r" % current_state.armed)
-        if prev_state.mode != current_state.mode: 
-            rospy.loginfo("Current mode changed to: %s" % current_state.mode)
-        prev_state = current_state
+        if prev_state.armed != commHub.getCurrentState().armed:
+            rospy.loginfo("Vehicle armed: %r" % commHub.getCurrentState().armed)
+        if prev_state.mode != commHub.getCurrentState().mode: 
+            rospy.loginfo("Current mode changed to: %s" % commHub.getCurrentState().mode)
+        prev_state = commHub.getCurrentState()
 
         # Update timestamp and publish pose 
         startUpPose.header.stamp = rospy.Time.now()
         commHub.local_pos_pub.publish(startUpPose)
         commHub.rate.sleep()
 
-    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    rospy.loginfo("\t Vehicle armed: %r" % commHub.getCurrentState().armed)
+    rospy.loginfo("\t Current mode: %s" % commHub.getCurrentState().mode)
     rospy.loginfo("End changeOffboardModeAndArm with %d iterations" %loops); 
 
 
@@ -143,8 +144,8 @@ def executeMission(commHub, navigation):
     pose.pose.orientation.w=0
     navigation.gotoPose(pose, 200)
     navigation.land()
-    rospy.loginfo("\t Vehicle armed: %r" % current_state.armed)
-    rospy.loginfo("\t Current mode: %s" % current_state.mode)
+    rospy.loginfo("\t Vehicle armed: %r" % commHub.getCurrentState().armed)
+    rospy.loginfo("\t Current mode: %s" %  commHub.getCurrentState().mode)
     rospy.loginfo("\t Vehicle armed: %r" % commHub.getCurrentState().armed)
     rospy.loginfo("\t Current mode: %s" % commHub.getCurrentState().mode)
     rospy.loginfo("landed at: %s " % navigation.strPose(  commHub.getCurrentPose() ))
@@ -169,14 +170,13 @@ def main():
 
 class CommunicationHub:
 
-
     def __init__(self):
         rospy.loginfo("CommunicationHub __init__")
         self.set_mode_client    = rospy.ServiceProxy('mavros/set_mode', SetMode) 
         self.arming_client_cmd  = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
         self.local_pos_pub      = rospy.Publisher('mavros/setpoint_position/local', PoseStamped, queue_size=10)
         self.land_client        = rospy.ServiceProxy("mavros/cmd/land", CommandTOL)
-        self.state_sub          = rospy.Subscriber('mavros/state', State, state_cb) 
+        self.state_sub          = rospy.Subscriber('mavros/state', State,state_cb) 
         #self.diagnostic          = rospy.Subscriber("diagnostics", DiagnosticArray, diag_cb) 
         self.local_pos_sub      = rospy.Subscriber('mavros/local_position/pose', PoseStamped, pose_cb)
         self.rate = rospy.Rate(20.0);  
