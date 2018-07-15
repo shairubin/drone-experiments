@@ -48,4 +48,4 @@ Essentially, this test script is all you need to understand the development envi
 
 ## Using Docker
 1. How to log-in into a **running container**: *'docker exec -it \<container name\> /bin/bash'*
-2. How to start a container from an image with interactive shell: sudo docker run -t -i \<image id\> /bin/bash 
+2. How to start a container from an image with interactive shell: sudo docker run -t -i \<image_id\> /bin/bash 

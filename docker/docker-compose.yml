@@ -2,8 +2,8 @@ version: '3'
 services:
     drone-demo:
         build:
-            context: ../../
-            dockerfile: src/docker/Dockerfile
+            context: ../
+            dockerfile: docker/Dockerfile
         privileged: true
         image: drone-demo:1.0
         environment:

@@ -2,8 +2,8 @@ FROM ubuntu:16.04
 
 ENV WORKSPACE_DIR /home/shairegular
 ENV CATKIN_WS ${WORKSPACE_DIR}/catkin_ws
-ENV DRONE_DEMO_DIR_DEST ${CATKIN_WS}/src/drone_demo
-ENV DRONE_DEMO_DIR_SRC /src
+ENV DRONE_DEMO_DIR_DEST ${CATKIN_WS}/src/py-control-with-mavros
+#ENV DRONE_DEMO_DIR_SRC  ${CATKIN_WS}
 
 
 RUN apt-get update && \
@@ -11,50 +11,54 @@ RUN apt-get update && \
                        lsb-release
 
 # Add ROS to sources.list
-#RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list && \
-#    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 && \
-#    apt-get update
+RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list && \
+    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 && \
+    apt-get update
 
 # Install gazebo with ROS
-#RUN apt-get update && \
-#    apt-get install -y ros-kinetic-gazebo-ros-control \
-#                       ros-kinetic-gazebo-ros-pkgs
+RUN apt-get update && \
+    apt-get install -y ros-kinetic-gazebo-ros-control \
+                       ros-kinetic-gazebo-ros-pkgs
 
 # Initialize rosdep (for later build with catkin)
-#RUN ["/bin/bash", "-c", "\
-#    rosdep init && \
-#    rosdep update \
-#"]
+RUN ["/bin/bash", "-c", "\
+    rosdep init && \
+    rosdep update \
+"]
 
 # Install catkin
-#RUN apt-get update && \
-#    apt-get install -y python-catkin-tools
-#RUN mkdir -p ${CATKIN_WS}/src
+RUN apt-get update && \
+    apt-get install -y python-catkin-tools
+RUN mkdir -p ${CATKIN_WS}/src
 
 # Install mavros (https://dev.px4.io/en/ros/mavros_installation.html)
-#RUN apt-get update && \
-#    apt-get install -y python-wstool \
-#                       python-rosinstall-generator \
-#                       python-catkin-tools
+RUN apt-get update && \
+    apt-get install -y python-wstool \
+                       python-rosinstall-generator \
+                       python-catkin-tools
 
-#RUN ["/bin/bash", "-c", "\
-#    source /opt/ros/kinetic/setup.bash && \
-#    mkdir -p ${CATKIN_WS}/src && \
-#    catkin init -w ${CATKIN_WS} && \
-#    wstool init ${CATKIN_WS}/src && \
-#    rosinstall_generator --upstream mavros | tee /tmp/mavros.rosinstall && \
-#    rosinstall_generator mavlink | tee -a /tmp/mavros.rosinstall && \
-#    wstool merge -t ${CATKIN_WS}/src /tmp/mavros.rosinstall && \
-#    wstool update -t ${CATKIN_WS}/src && \
-#    rosdep install --from-paths ${CATKIN_WS}/src --ignore-src --rosdistro kinetic -y \
-#"]
+RUN ["/bin/bash", "-c", "\
+    source /opt/ros/kinetic/setup.bash && \
+    mkdir -p ${CATKIN_WS}/src && \
+    catkin init -w ${CATKIN_WS} && \
+    wstool init ${CATKIN_WS}/src && \
+    rosinstall_generator --upstream mavros | tee /tmp/mavros.rosinstall && \
+    rosinstall_generator mavlink | tee -a /tmp/mavros.rosinstall && \
+    wstool merge -t ${CATKIN_WS}/src /tmp/mavros.rosinstall && \
+    wstool update -t ${CATKIN_WS}/src && \
+    rosdep install --from-paths ${CATKIN_WS}/src --ignore-src --rosdistro kinetic -y \
+"]
 
-#RUN ["/bin/bash", "-c", "\
-#    source /opt/ros/kinetic/setup.bash && \
-#    catkin build -w ${CATKIN_WS} \
-#"]
+# prepare drone_demo code for a build
+COPY py-control-with-mavros ${DRONE_DEMO_DIR_DEST} 
 
-#RUN ~/catkin_ws/src/mavros/mavros/scripts/install_geographiclib_datasets.sh
+# run catkin build for all packages 
+RUN ["/bin/bash", "-c", "\
+    source /opt/ros/kinetic/setup.bash && \
+    catkin build -w ${CATKIN_WS} \
+"]
+
+RUN ${CATKIN_WS}/src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 
 # Install avoidance module dependencies
 #RUN apt-get update && \
@@ -67,7 +71,7 @@ RUN apt-get update && \
 #COPY sim/worlds ${WORLDS_DIR}
 
 # prepare drone_demo code for a build
-COPY ${DRONE_DEMO_DIR_SRC} ${DRONE_DEMO_DIR_DEST}
+# COPY catkin_ws ${CATKIN_WS} 
 
 # NOTE: catkin build fails the first time (maybe the modules have to be built in the right order?)
 #RUN ["/bin/bash", "-c", "\
