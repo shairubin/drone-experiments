@@ -11,10 +11,10 @@ RUN apt-get update && \
     apt-get install -y git \
                        lsb-release
 # install vim for easier debugging / editing
-RUN apt-get install vim
+RUN apt-get install -y vim
 
 # install killall command used by demo scripts
-RUN apt-get install psmisc
+RUN apt-get install -y psmisc
 
 # Add ROS to sources.list
 RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list && \
