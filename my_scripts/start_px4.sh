@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "setup gazebo script"
-cd ~/src/Firmware
+#cd ~/src/Firmware
+cd $FIRMWARE_DIR
 simenv=$1
 echo $simenv
 pwd 

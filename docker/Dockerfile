@@ -3,12 +3,18 @@ FROM ubuntu:16.04
 ENV WORKSPACE_DIR /home/shairegular
 ENV CATKIN_WS ${WORKSPACE_DIR}/catkin_ws
 ENV DRONE_DEMO_DIR_DEST ${CATKIN_WS}/src/py-control-with-mavros
-#ENV DRONE_DEMO_DIR_SRC  ${CATKIN_WS}
+ENV DRONE_SCRIPT_DIR_DEST ${CATKIN_WS}/src/scripts
+ENV FIRMWARE_DIR ${WORKSPACE_DIR}/Firmware
 
 
 RUN apt-get update && \
     apt-get install -y git \
                        lsb-release
+# install vim for easier debugging / editing
+RUN apt-get install vim
+
+# install killall command used by demo scripts
+RUN apt-get install psmisc
 
 # Add ROS to sources.list
 RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list && \
@@ -51,6 +57,7 @@ RUN ["/bin/bash", "-c", "\
 
 # prepare drone_demo code for a build
 COPY py-control-with-mavros ${DRONE_DEMO_DIR_DEST} 
+COPY my_scripts ${DRONE_SCRIPT_DIR_DEST}
 
 # run catkin build for all packages 
 RUN ["/bin/bash", "-c", "\
@@ -68,36 +75,33 @@ RUN ${CATKIN_WS}/src/mavros/mavros/scripts/install_geographiclib_datasets.sh
 # Prepare and build avoidance
 #COPY global_planner ${AVOIDANCE_DIR}
 #COPY sim/models ${MODELS_DIR}
-#COPY sim/worlds ${WORLDS_DIR}
-
-# prepare drone_demo code for a build
-# COPY catkin_ws ${CATKIN_WS} 
+#COPY sim/worlds ${WORLDS_DIR} 
 
 # NOTE: catkin build fails the first time (maybe the modules have to be built in the right order?)
-#RUN ["/bin/bash", "-c", "\
-#    source /opt/ros/kinetic/setup.bash && \
-#    catkin build -w ${CATKIN_WS}; catkin build -w ${CATKIN_WS} \
-#"]
+RUN ["/bin/bash", "-c", "\
+    source /opt/ros/kinetic/setup.bash && \
+    catkin build -w ${CATKIN_WS}; catkin build -w ${CATKIN_WS} \
+"]
 
 # Checkout and build Firmware
-#RUN git clone https://github.com/PX4/Firmware.git ${FIRMWARE_DIR}
-#RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
+RUN git clone https://github.com/PX4/Firmware.git ${FIRMWARE_DIR}
+RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
 
-#ENV GAZEBO_MODEL_PATH ${GAZEBO_MODEL_PATH}:${MODELS_DIR}
+ENV GAZEBO_MODEL_PATH ${GAZEBO_MODEL_PATH}:${MODELS_DIR}
 
-#RUN apt-get update && \
-#    apt-get install -y libopencv-dev \
-#                       protobuf-compiler \
-#                       python-jinja2 \
-#                       python-toml
+RUN apt-get update && \
+    apt-get install -y libopencv-dev \
+                       protobuf-compiler \
+                       python-jinja2 \
+                       python-toml
 
-#ENV QT_X11_NO_MITSHM=1
+ENV QT_X11_NO_MITSHM=1
 
-#RUN ["/bin/bash", "-c", " \
-#    cd ${FIRMWARE_DIR} && \
-#    . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
-#    DONT_RUN=1 make posix_sitl_default gazebo \
-#"]
+RUN ["/bin/bash", "-c", " \
+    cd ${FIRMWARE_DIR} && \
+    . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
+    DONT_RUN=1 make posix_sitl_default gazebo \
+"]
 
 # Start avoidance simulation
 #CMD ["/bin/bash", "-c", " \
