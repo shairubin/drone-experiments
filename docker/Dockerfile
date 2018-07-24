@@ -6,7 +6,7 @@ ENV DRONE_DEMO_DIR_DEST ${CATKIN_WS}/src/py-control-with-mavros
 ENV DRONE_SCRIPT_DIR_DEST ${CATKIN_WS}/src/scripts
 ENV FIRMWARE_DIR ${WORKSPACE_DIR}/Firmware
 
-
+# the below will run as root until creation of a new user 
 RUN apt-get update && \
     apt-get install -y git \
                        lsb-release
@@ -42,6 +42,11 @@ RUN apt-get update && \
     apt-get install -y python-wstool \
                        python-rosinstall-generator \
                        python-catkin-tools
+
+# Create the user shairubin - not sure we need the workdir below 
+#RUN useradd -d /home/shairegular -ms /bin/bash -g root -G sudo -p ubuntu shairegular
+#USER shairegular
+#WORKDIR /home/shairegular
 
 RUN ["/bin/bash", "-c", "\
     source /opt/ros/kinetic/setup.bash && \
@@ -112,4 +117,4 @@ RUN ["/bin/bash", "-c", " \
 #    roslaunch global_planner global_planner_sitl_mavros.launch world_path:=${WORLDS_DIR}/test_city_2.world \
 #"]
 RUN echo 'Shai Rubin Container'
-CMD ["/bin/bash"]
+CMD ["/home/shairegular/catkin_ws/src/scripts/start_px4.sh"]
