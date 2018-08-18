@@ -1,12 +1,18 @@
 version: '3'
 services:
-    drone-demo:
+    avoidance-demo:
         build:
             context: ../
-            dockerfile: docker/Dockerfile
+            dockerfile: docker/Dockerfile.avoidance-demo 
         privileged: true
-        image: drone-demo:1.0
+        image: avoidance-demo-demo:1.1
         environment:
             - DISPLAY=${DISPLAY}
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    drone-base:
+        build:
+            context: /home/shairegular/px4-avoidance/avoidance
+            dockerfile: /home/shairegular/catkin_ws/src/docker/Dockerfile.drone-base
+        privileged: true
+        image: drone-base:1.0

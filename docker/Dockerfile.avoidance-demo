@@ -1,0 +1,47 @@
+FROM drone-base:1.0
+
+
+ENV WORKSPACE_DIR /root
+ENV FIRMWARE_DIR ${WORKSPACE_DIR}/Firmware
+ENV CATKIN_WS ${WORKSPACE_DIR}/catkin_ws
+ENV AVOIDANCE_DIR ${CATKIN_WS}/src/avoidance
+ENV MODELS_DIR ${WORKSPACE_DIR}/sim/models
+ENV WORLDS_DIR ${WORKSPACE_DIR}/sim/worlds
+
+ENV DRONE_DEMO_DIR_DEST ${CATKIN_WS}/src/py-control-with-mavros
+ENV DRONE_SCRIPT_DIR_DEST ${CATKIN_WS}/src/scripts
+
+# prepare drone_demo code for a build
+COPY py-control-with-mavros ${DRONE_DEMO_DIR_DEST} 
+COPY my_scripts ${DRONE_SCRIPT_DIR_DEST}
+
+# run catkin build for all packages 
+RUN ["/bin/bash", "-c", "\
+    source /opt/ros/kinetic/setup.bash && \
+    catkin build -w ${CATKIN_WS} \
+"]
+
+
+# NOTE: catkin build fails the first time (maybe the modules have to be built in the right order?)
+RUN ["/bin/bash", "-c", "\
+    source /opt/ros/kinetic/setup.bash && \
+    catkin build -w ${CATKIN_WS}; catkin build -w ${CATKIN_WS} \
+"]
+
+
+#original gazebo running 
+RUN ["/bin/bash", "-c", " \
+    cd ${FIRMWARE_DIR} && \
+    . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
+    DONT_RUN=1 make posix_sitl_default gazebo \
+"]
+
+
+# Start avoidance simulation
+CMD ["/bin/bash", "-c", " \
+    source /opt/ros/kinetic/setup.bash && \
+    source ${CATKIN_WS}/devel/setup.bash && \
+    export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:${FIRMWARE_DIR} && \
+    . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
+    roslaunch global_planner global_planner_sitl_mavros.launch world_path:=${WORLDS_DIR}/test_city_2.world \
+"]

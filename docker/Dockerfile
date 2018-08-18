@@ -43,6 +43,20 @@ RUN apt-get update && \
                        python-rosinstall-generator \
                        python-catkin-tools
 
+# Checkout and build Firmware
+RUN git clone https://github.com/PX4/Firmware.git ${FIRMWARE_DIR}
+RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
+
+ENV GAZEBO_MODEL_PATH ${GAZEBO_MODEL_PATH}:${MODELS_DIR}
+
+RUN apt-get update && \
+    apt-get install -y libopencv-dev \
+                       protobuf-compiler \
+                       python-jinja2 \
+                       python-toml
+
+ENV QT_X11_NO_MITSHM=1
+
 # Create the user shairubin - not sure we need the workdir below 
 #RUN useradd -d /home/shairegular -ms /bin/bash -g root -G sudo -p ubuntu shairegular
 #USER shairegular
@@ -89,23 +103,28 @@ RUN ["/bin/bash", "-c", "\
 "]
 
 # Checkout and build Firmware
-RUN git clone https://github.com/PX4/Firmware.git ${FIRMWARE_DIR}
-RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
+#RUN git clone https://github.com/PX4/Firmware.git ${FIRMWARE_DIR}
+#RUN git -C ${FIRMWARE_DIR} submodule update --init --recursive
 
-ENV GAZEBO_MODEL_PATH ${GAZEBO_MODEL_PATH}:${MODELS_DIR}
+#ENV GAZEBO_MODEL_PATH ${GAZEBO_MODEL_PATH}:${MODELS_DIR}
 
-RUN apt-get update && \
-    apt-get install -y libopencv-dev \
-                       protobuf-compiler \
-                       python-jinja2 \
-                       python-toml
+#RUN apt-get update && \
+#    apt-get install -y libopencv-dev \
+#                       protobuf-compiler \
+#                       python-jinja2 \
+#                       python-toml
 
-ENV QT_X11_NO_MITSHM=1
+#ENV QT_X11_NO_MITSHM=1
 
+#RUN ["/bin/bash", "-c", " \
+#    cd ${FIRMWARE_DIR} && \
+#    . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
+#    DONT_RUN=1 make posix_sitl_default gazebo \
+#"]
 RUN ["/bin/bash", "-c", " \
     cd ${FIRMWARE_DIR} && \
     . ${FIRMWARE_DIR}/Tools/setup_gazebo.bash ${FIRMWARE_DIR} ${FIRMWARE_DIR}/build/posix_sitl_default && \
-    DONT_RUN=1 make posix_sitl_default gazebo \
+    DONT_RUN=1 make posix_sitl_default gazebo_iris \
 "]
 
 # Start avoidance simulation
